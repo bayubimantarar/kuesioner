@@ -1,0 +1,669 @@
+<html>
+<head>
+    <title>Penilaian Alumni/Lulusan</title>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bko-css.css'); ?>">
+</head>
+<body style="margin:0 30px; margin-top:30px">
+<h2>Kuesioner Penilaian Dari Alumni</h2>
+<form class="fancy marginal" method="post">
+    <table width="978" border="0">
+        <tr>
+            <td colspan="4">
+                <div style="padding-bottom:3px;"><h4>I. Profil Responden (Alumni)</h3></div>
+            </td>
+        </tr>
+
+        <tr>
+            <td valign="top" width="20">1.</td>
+            <td valign="top" colspan="3">
+                <div style="padding-bottom:3px;">Nama Lengkap <input type="text" size="60" name="nama" required /></div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">2.</td>
+            <td valign="top" colspan="3">
+                <div style="padding-bottom:3px;">Lulus tahun <input type="text" size="60" name="lulus" required /></div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top"></td>
+            <td valign="top" colspan="3">
+                <div style="padding-bottom:3px;">Wisuda tanggal <input type="text" size="60" name="wisuda" required /></div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">3.</td>
+            <td valign="top" colspan="3">
+                <div style="padding-bottom:3px;">Jenis Kelamin</div>
+                <div style="padding-bottom:8px;">
+                    <ul style="list-style-type:none; margin:5px 0; padding-left:0">
+                        <li style="float:left; padding-right:20px;"><input type="radio" name="jk" />&nbsp; Pria</li>
+                        <li style="float:left; padding-right:20px;"><input type="radio" name="jk" />&nbsp; Wanita</li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">4.</td>
+            <td valign="top" colspan="3">
+                <div style="padding-bottom:3px;">Usia</div>
+                <div style="padding-bottom:8px;">
+                    <ul style="list-style-type:none; margin:5px 0; padding-left:0">
+                        <li style="float:left; padding-right:20px;"><input type="radio" name="usia" />&nbsp; 20 - 25 tahun</li>
+                        <li style="float:left; padding-right:20px;"><input type="radio" name="usia" />&nbsp; 26 - 30 tahun</li>
+                        <li style="float:left; padding-right:20px;"><input type="radio" name="usia" />&nbsp; 31 - 40 tahun</li>
+                        <li style="float:left; padding-right:20px;"><input type="radio" name="usia" />&nbsp; &gt; 40 tahun</li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">5.</td>
+            <td valign="top" colspan="3">
+                <div style="padding-bottom:3px;">Berapa lama Anda mendapatkan pekerjaan setelah lulus</div>
+                <div style="padding-bottom:8px;">
+                    <ul style="list-style-type:none; margin:0px 0; padding-left:0">
+                        <li style="padding-right:20px;"><input type="radio" name="tunggu" />&nbsp; Telah bekerja sebelum lulus</li>
+                        <li style="padding-right:20px;"><input type="radio" name="tunggu" />&nbsp; &lt; 3 bulan</li>
+                        <li style="padding-right:20px;"><input type="radio" name="tunggu" />&nbsp; 3 - 6 bulan</li>
+                        <li style="padding-right:20px;"><input type="radio" name="tunggu" />&nbsp; 7 - 12 bulan</li>
+                        <li style="padding-right:20px;"><input type="radio" name="tunggu" />&nbsp; &gt; 1 tahun</li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">6.</td>
+            <td valign="top" colspan="3">
+                <div style="padding-bottom:3px;">Status perusahaan saat ini</div>
+                <div style="padding-bottom:8px;">
+                    <ul style="list-style-type:none; margin:0px 0; padding-left:0">
+                        <li style="padding-right:20px;"><input type="radio" name="status" />&nbsp; Pemerintahan</li>
+                        <li style="padding-right:20px;"><input type="radio" name="status" />&nbsp; BUMN</li>
+                        <li style="padding-right:20px;"><input type="radio" name="status" />&nbsp; Swasta</li>
+                        <li style="padding-right:20px;"><input type="radio" name="status" />&nbsp; Professional</li>
+                        <li style="padding-right:20px;"><input type="radio" name="status" />&nbsp; Wiraswasta</li>
+                        <li style="padding-right:20px;"><input type="radio" name="status" />&nbsp; Lain-lain <input type="text" size="60" /></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">7.</td>
+            <td valign="top" colspan="3">
+                <div style="padding-bottom:3px;">Nama Perusahaan <input type="text" size="60" name="perusahaan" required /></div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top"></td>
+            <td valign="top" colspan="3">
+                <div style="padding-bottom:3px;">Alamat Perusahaan <input type="text" size="60" name="alamatperush" required /></div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">8.</td>
+            <td valign="top" colspan="3">
+                <div style="padding-bottom:3px;">Bidang pekerjaan</div>
+                <div style="padding-bottom:8px;">
+                    <ul style="list-style-type:none; margin:0px 0; padding-left:0">
+                        <li style="padding-right:20px;"><input type="radio" name="bidang" />&nbsp; Akuntansi (Keuangan)</li>
+                        <li style="padding-right:20px;"><input type="radio" name="bidang" />&nbsp; Marketing</li>
+                        <li style="padding-right:20px;"><input type="radio" name="bidang" />&nbsp; SDM</li>
+                        <li style="padding-right:20px;"><input type="radio" name="bidang" />&nbsp; IT</li>
+                        <li style="padding-right:20px;"><input type="radio" name="bidang" />&nbsp; Manufaktur</li>
+                        <li style="padding-right:20px;"><input type="radio" name="bidang" />&nbsp; Lain-lain <input type="text" size="60" /></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">9.</td>
+            <td valign="top" colspan="3">
+                <div style="padding-bottom:3px;">Jabatan saat ini</div>
+                <div style="padding-bottom:8px;">
+                    <ul style="list-style-type:none; margin:0px 0; padding-left:0">
+                        <li style="padding-right:20px;"><input type="radio" name="jabatan" />&nbsp; Komisaris</li>
+                        <li style="padding-right:20px;"><input type="radio" name="jabatan" />&nbsp; Direktur</li>
+                        <li style="padding-right:20px;"><input type="radio" name="jabatan" />&nbsp; Manajer</li>
+                        <li style="padding-right:20px;"><input type="radio" name="jabatan" />&nbsp; Kepala Bagian</li>
+                        <li style="padding-right:20px;"><input type="radio" name="jabatan" />&nbsp; Supervisor</li>
+                        <li style="padding-right:20px;"><input type="radio" name="jabatan" />&nbsp; Staff</li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <table border="0">
+        <tr>
+            <td colspan="7">
+                <div style="padding-bottom:3px;"><h4>II. Profil Program Studi Sistem Informasi S1</h3></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="7">
+                <div style="padding-bottom:3px;">Keterangan:</div>
+            </td>
+        </tr>
+        <tr>
+            <td width="50">SS</td>
+            <td>:</td>
+            <td>Sangat Setuju</td>
+        </tr>
+        <tr>
+            <td width="50">S</td>
+            <td>:</td>
+            <td>Setuju</td>
+        </tr>
+        <tr>
+            <td width="50">BS</td>
+            <td>:</td>
+            <td>Biasa Saja</td>
+        </tr>
+        <tr>
+            <td width="50">TS</td>
+            <td>:</td>
+            <td>Tidak Setuju</td>
+        </tr>
+    </table>
+    <table border="1" cellspacing="0" cellpadding="5">
+        <tr>
+            <td colspan="2" align="center">DIMENSI</td>
+            <td colspan="4" align="center" width="400">KINERJA PRODI TEKNIK INFORMATIKA S1</td>
+        </tr>
+        <tr>
+            <td colspan="2"><b>Product</b></td>
+            <td align="center">SS</td>
+            <td align="center">S</td>
+            <td align="center">BS</td>
+            <td align="center">TS</td>
+        </tr>
+        <tr>
+            <td valign="top" width="30">1.</td>
+            <td valign="top">Materi kuliah yang diberikan sangat berbobot</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">2.</td>
+            <td valign="top">Kesesuaian kurikulum dengan kebutuhan dunia kerja</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">3.</td>
+            <td valign="top">Relevansi kasus dengan dunia nyata</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">4.</td>
+            <td valign="top">Tersedianya pilihan konsentrasi</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">5.</td>
+            <td valign="top">Tersedianya kelas reguler/non reguler</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">6.</td>
+            <td valign="top">Nama perguruan tinggi yang terkenal</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">7.</td>
+            <td valign="top">Mudah mendapat pekerjaan setelah lulus</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        
+        <tr>
+            <td colspan="10"><b>Price</b></td>
+        </tr>
+        <tr>
+            <td valign="top" width="30">8.</td>
+            <td valign="top">Kesesuaian biaya kuliah dengan kualitas yang diberikan</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">9.</td>
+            <td valign="top">Pembayaran dapat dicicil</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        
+        <tr>
+            <td colspan="10"><b>Place</b></td>
+        </tr>
+        <tr>
+            <td valign="top">10.</td>
+            <td valign="top">Lokasi kuliah mudah dijangkau</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">11.</td>
+            <td valign="top">Suasana akademik yang kondusif mendukung pembelajaran</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        
+        <tr>
+            <td colspan="10"><b>Promotion</b></td>
+        </tr>
+        <tr>
+            <td valign="top" width="30">12.</td>
+            <td valign="top">Adanya kunjungan presentasi dari universitas ke SMU-SMU</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">13.</td>
+            <td valign="top">Ada poster/spanduk yang mudah dilihat dan jelas tentang adanya pendaftaran</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">14.</td>
+            <td valign="top">Tersedianya brosur gratis, jelas dan lengkap bagi peminat</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">15.</td>
+            <td valign="top">Adanya iklan pendaftaran di media cetak/eletronik</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">16.</td>
+            <td valign="top">Adanya tenaga customer service yang dapat dimintai keterangan</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">17.</td>
+            <td valign="top">Tersedianya informasi lengkap melalui internet yang mudah diakses</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        
+        <tr>
+            <td colspan="10"><b>Dosen</b></td>
+        </tr>
+        <tr>
+            <td valign="top" width="30">18.</td>
+            <td valign="top">Dosen komunikatif dalam proses perkuliahan</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">19.</td>
+            <td valign="top">Dosen mengajar sesuai dengan waktu yang dijadwalkan</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">20.</td>
+            <td valign="top">Dosen menguasai materi</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">21.</td>
+            <td valign="top">Dosen sanggup menjawab pertanyaan dengan memuaskan</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">22.</td>
+            <td valign="top">Dosen memberikan soal sesuai dengan materi</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">23.</td>
+            <td valign="top">Dosen mengajukan kasus yang berhubungan dengan dunia nyata</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">24.</td>
+            <td valign="top">Dosen menilai secara objektif</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">25.</td>
+            <td valign="top">Banyak dosen tamu dari luar perguruan tinggi</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        
+        <tr>
+            <td colspan="10"><b>Tata Usaha</b></td>
+        </tr>
+        <tr>
+            <td valign="top" width="30">26.</td>
+            <td valign="top">Staff tata usaha menguasai informasi yang diperlukan</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">27.</td>
+            <td valign="top">Staff tata usaha memberikan informasi yang jelas</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">28.</td>
+            <td valign="top">Staff tata usaha berpakaian rapi dalam bekerja</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">29.</td>
+            <td valign="top">Staff tata usaha bersikap ramah dalam pelayanan</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">30.</td>
+            <td valign="top">Staff tata usaha cepat dalam memberikan pelayanan</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">31.</td>
+            <td valign="top">Staff tata usaha cepat dalam memberikan bantuan</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">32.</td>
+            <td valign="top">Staff tata usaha cepat tanggap atas keluhan mahasiswa</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        
+        <tr>
+            <td colspan="10"><b>Pekarya Non Tata Usaha</b></td>
+        </tr>
+        <tr>
+            <td valign="top" width="30">33.</td>
+            <td valign="top">Pekarya berpakaian rapi dan bersikap sopan saat bertugas</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">34.</td>
+            <td valign="top">Pekarya memberikan informasi bila diminta</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        
+        <tr>
+            <td colspan="10"><b>Proses</b></td>
+        </tr>
+        <tr>
+            <td valign="top" width="30">35.</td>
+            <td valign="top">Kemudahan dalam proses pendaftaran</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">36.</td>
+            <td valign="top">Kemudahan dalam proses pembayaran</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">37.</td>
+            <td valign="top">Kecepatan dalam proses nilai</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">38.</td>
+            <td valign="top">Kemudahan mengetahui nilai</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">39.</td>
+            <td valign="top">Waktu studi yang cepat</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">40.</td>
+            <td valign="top">Kemudahan memperoleh bahan kuliah/handout</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">41.</td>
+            <td valign="top">Konsistensi ruang dan waktu kuliah</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>'<tr>
+            <td valign="top">42.</td>
+            <td valign="top">Adanya pemberitahuan tentang perubahan jadwal kuliah</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        
+        <tr>
+            <td colspan="10"><b>Physical Evidence</b></td>
+        </tr>
+        <tr>
+            <td valign="top" width="30">43.</td>
+            <td valign="top">Sarana prasarana perkuliahan tersedia dengan sangat baik</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">44.</td>
+            <td valign="top">Buku teks dan jurnal ilmiah terbaru tersedia dalam jumlah yang cukup</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">45.</td>
+            <td valign="top">Ketersediaan buku edisi terbaru di perpustakaan</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">46.</td>
+            <td valign="top">Pelayanan perpustakaan dibuka hingga malam hari</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">47.</td>
+            <td valign="top">Perpustakaan dapat diakses melalui Internet</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">48.</td>
+            <td valign="top">Ruang kuliah bersih dan nyaman</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">49.</td>
+            <td valign="top">Fasilitas hotspot tersedia dengan sangat baik</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">50.</td>
+            <td valign="top">Fakultas menyediakan ruang diskusi untuk mahasiswa</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">51.</td>
+            <td valign="top">Fakultas menyediakan sarana ibadah dengan sangat baik</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">52.</td>
+            <td valign="top">Kampus mengelola sarana parkir dengan aman dan tertib</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td valign="top">53.</td>
+            <td valign="top">Sarana toilet dikelola dengan baik dan bersih</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+        <tr>
+            <td colspan="10"><b>Word of Mouth</b></td>
+        </tr>
+        <tr>
+            <td valign="top" width="30">54.</td>
+            <td valign="top">Kesediaan mahasiswa dan alumni merekomendasikan program studi Sistem Informasi S1 kepada teman/family</td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+            <td align="center"><input type="radio" name="" /></td>
+        </tr>
+    </table>
+    
+    
+    <br /><br />
+    <table width="978">
+        <tr>
+            <td valign="top">
+                <div style="padding-bottom:3px;">Saran bagi Program Studi</div>
+                <div style="padding-bottom:8px;">
+                    <textarea rows="8" cols="100"></textarea>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><div><input type="submit" name="simpan" value="SIMPAN" /></div></td>
+        </tr>
+        <tr>
+            <td><div style="padding-top:40px;">* Terima kasih atas kesediaan Anda meluangkan waktu untuk mengisi dan melengkapi kusioner ini sebagai umpan balik pagi pengembangan Program Studi S1 Sistem Informasi</div></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
