@@ -80,7 +80,9 @@ class Form_kuesioner extends CI_Controller {
 				$query_identitas 	= $this->kuesioner_app->identitas_add_process($data_identitas);
 				$query_bekerja 		= $this->kuesioner_app->bekerja_add_process($data_bekerja);
 
-				echo 'berhasil - Anda bekerja!';
+				// echo 'berhasil - Anda bekerja!';
+				$this->session->set_flashdata('notif', 'Terima Kasih Anda telah mengirimkan kuesioner!');
+				redirect(base_url('form_kuesioner/'));
 
 			}else if($kegiatan == 2){
 				$nama_usaha 			= $this->input->post('nama_usaha');

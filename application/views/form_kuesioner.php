@@ -4,6 +4,17 @@
   <li><a href="<?php echo base_url('home'); ?>">Beranda</a></li>
   <li class="active">Kuesioner</li>
 </ol>
+<!-- <?php if($this->session->flashdata('notif')):?>
+<div class="alert alert-success" role="alert">
+    <p><?php echo $this->session->flashdata('notif'); ?></p>
+</div>
+<?php endif; ?> -->
+<?php if($this->session->flashdata('notif')): ?>
+<div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong><?php echo $this->session->flashdata('notif'); ?></strong>
+</div>
+<?php endif; ?>
     <div id="wrapper">
         <div id="page-wrapper">
             <div class="row">
