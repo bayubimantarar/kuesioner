@@ -17,7 +17,7 @@
                                     <i class="fa fa-users fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php echo $alumni; ?></div>
+                                    <div class="huge">10</div>
                                     <div>Alumni</div>
                                 </div>
                             </div>

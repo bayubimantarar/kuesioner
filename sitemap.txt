@@ -1,0 +1,16 @@
+Beranda
+Profil
+	- Profil
+	- Visi dan Misi
+	- Kurikulum
+	- Fasilitas & Prestasi
+	- Struktur Organisasi
+Artikel
+Berita
+Galeri
+	- Galeri Foto
+	- Galeri Video
+Publikasi
+	- Galeri Poster
+	- Galeri Paper
+Kontak

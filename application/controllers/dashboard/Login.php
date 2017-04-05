@@ -15,9 +15,9 @@ class Login extends CI_Controller {
 				'title' => 'Login | Website Kuesioner'
 				);
 
-		$this->load->view('pages/header', $data);
+		$this->load->view('dashboard/pages/header', $data);
 		$this->load->view('dashboard/login');
-		$this->load->view('pages/footer');
+		$this->load->view('dashboard/pages/footer');
 	}
 
 	public function check_login(){
@@ -28,9 +28,9 @@ class Login extends CI_Controller {
 		$this->form_validation->set_error_delimiters("<div class='text-danger'>", "</div>");
 
 		if($this->form_validation->run() == FALSE){
-			$this->load->view('pages/header');
+			$this->load->view('dashboard/pages/header');
 			$this->load->view('dashboard/login');
-			$this->load->view('pages/footer');
+			$this->load->view('dashboard/pages/footer');
 		}else{
 
 			$username = $this->input->post('username');

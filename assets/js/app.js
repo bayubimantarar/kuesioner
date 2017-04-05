@@ -23,15 +23,15 @@ $(document).ready(function(){
                 resize: true,
                 data: [{
                         label: 'Sudah Bekerja',
-                        value: data[0].total_kerja
-                    },
-                    {
-                        label: 'Belum Bekerja',
-                        value: data[0].belum_kerja
+                        value: data[0].bekerja
                     },
                     {
                         label: 'Membuka Usaha',
                         value: data[0].buka_usaha
+                    },
+                    {
+                        label: 'Belum Bekerja',
+                        value: data[0].belum_bekerja
                     }]
             });
         }

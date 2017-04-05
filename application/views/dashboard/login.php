@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
-                <div class="login-panel panel panel-green">
+                <div class="login-panel panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
@@ -20,7 +20,7 @@
                                     <input class="form-control" name="password" type="password">
                                 </div>
                                     <p class="text-info"><a href="#">I forgot my password</a></p>
-                                <input type="submit" name="submit" value="Login" class="btn btn-lg btn-success btn-block">
+                                <input type="submit" name="submit" value="Login" class="btn btn-lg btn-primary btn-block">
                             </fieldset>
                         <?php echo form_close(); ?>
                     </div>
