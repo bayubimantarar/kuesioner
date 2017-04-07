@@ -13,14 +13,14 @@ class Alumni extends CI_Controller {
 
 	public function index(){
 		$data = array(
-				'title' 		=> 'Alumni | Website Kuesioner',
-				'identitas' 	=> $this->kuesioner_app->get_data_identitas()
+				'title' 	=> 'Alumni | Website Kuesioner',
+				'alumni' 	=> $this->kuesioner_app->get_data_alumni()
 				);
 
 		$this->load->view('dashboard/pages/header', $data);
 		$this->load->view('dashboard/pages/navbar');
 		$this->load->view('dashboard/pages/sidebar');
-		$this->load->view('dashboard/identitas/index', $data);
+		$this->load->view('dashboard/alumni/index', $data);
 		$this->load->view('dashboard/pages/footer');
 	}
 
@@ -32,8 +32,20 @@ class Alumni extends CI_Controller {
 		$this->load->view('dashboard/pages/header', $data);
 		$this->load->view('dashboard/pages/navbar');
 		$this->load->view('dashboard/pages/sidebar');
-		$this->load->view('dashboard/chart');
+		$this->load->view('dashboard/alumni/chart_kegiatan');
 		$this->load->view('dashboard/pages/footer');	
+	}
+
+	public function total_alumni(){
+		$data = array(
+				'title' => 'Kegiatan Alumni' 
+				);
+
+		$this->load->view('dashboard/pages/header', $data);
+		$this->load->view('dashboard/pages/navbar');
+		$this->load->view('dashboard/pages/sidebar');
+		$this->load->view('dashboard/chart');
+		$this->load->view('dashboard/pages/footer');
 	}
 
 }

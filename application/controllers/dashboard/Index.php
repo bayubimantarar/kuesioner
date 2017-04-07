@@ -18,7 +18,8 @@ class Index extends CI_Controller {
 	**/ 
 	public function index(){
 		$data = array(
-				'title' => 'Dashboard | Website Kuesioner'
+				'title' => 'Dashboard | Website Kuesioner',
+				'total_alumni' => $this->kuesioner_app->get_total_alumni()
 				);
 
 		$this->load->view('dashboard/pages/header', $data);
@@ -27,22 +28,6 @@ class Index extends CI_Controller {
 		$this->load->view('dashboard/index', $data);
 		$this->load->view('dashboard/pages/footer');
 	}
-	/**
-		End function view table
-	**/
-
-	public function logout(){
-		$this->session->sess_destroy();
-		redirect(base_url('dashboard/login'));
-	}
-
-	// public function chart(){
-	// 	$this->load->view('pages/header');
-	// 	$this->load->view('pages/navbar');
-	// 	$this->load->view('pages/sidebar');
-	// 	$this->load->view('chart');
-	// 	$this->load->view('pages/footer');	
-	// }
 
 }
 

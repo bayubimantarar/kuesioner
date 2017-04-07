@@ -13,7 +13,7 @@ $(document).ready(function(){
 	}).change();
 
 	 $.ajax({
-        url: "../api",
+        url: "../api/kegiatan_alumni",
         dataType: "JSON",
         type: "POST",
         data: {get_values: true},
@@ -32,8 +32,10 @@ $(document).ready(function(){
                     {
                         label: 'Belum Bekerja',
                         value: data[0].belum_bekerja
-                    }]
+                    }],
+                formatter: function(data) {return data+"%"}
             });
         }
     });
+
 });

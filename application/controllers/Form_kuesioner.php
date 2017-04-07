@@ -10,12 +10,13 @@ class Form_kuesioner extends CI_Controller {
 
 	public function index(){
 		$data = array(
-				'title' => 'Form Kuesioner' 
+				'title' => 'Form Kuesioner',
+				'pertanyaan' => $this->kuesioner_app->get_data_pertanyaan()
 				);
 
 		$this->load->view('pages/header', $data);
 		$this->load->view('pages/navbar');
-		$this->load->view('form_kuesioner');
+		$this->load->view('form_kuesioner', $data);
 	}
 
 	public function kirim(){
@@ -52,10 +53,12 @@ class Form_kuesioner extends CI_Controller {
 				$tahun_masuk 					= $this->input->post('tahun_masuk');
 				$gaji_pertama 					= $this->input->post('gaji_pertama');
 				$informasi_lowongan 			= $this->input->post('informasi_lowongan');
+				$informasi_lowongan_lainnya		= $this->input->post('informasi_lowongan_lainnya');
 				$skala_relevan 					= $this->input->post('skala_relevan');
 				$pengetahuan_relevan 			= $this->input->post('pengetahuan_relevan');
 
-				$data_identitas = array(
+				if(!empty($informasi_lowongan)){
+					$data_identitas = array(
 									'nim' 		=> $nim,
 									'nama' 		=> $nama,
 									'lulus' 	=> $lulus,
@@ -65,24 +68,57 @@ class Form_kuesioner extends CI_Controller {
 									'kegiatan'	=> $kegiatan
 								);
 
-				$data_bekerja 	= array(
-									'nim' 					=> $nim,
-									'nama_perusahaan' 		=> $nama_perusahaan_bekerja,
-									'alamat_perusahaan' 	=> $alamat_perusahaan_bekerja,
-									'sektor_perusahaan' 	=> $sektor_perusahaan_bekerja,
-									'tahun_masuk' 			=> $tahun_masuk,
-									'gaji_pertama'			=> $gaji_pertama,
-									'informasi_lowongan' 	=> $informasi_lowongan,
-									'skala_relevan' 		=> $skala_relevan,
-									'pengetahuan_relevan' 	=> $pengetahuan_relevan
-							);
+					$data_bekerja 	= array(
+										'nim' 					=> $nim,
+										'nama_perusahaan' 		=> $nama_perusahaan_bekerja,
+										'alamat_perusahaan' 	=> $alamat_perusahaan_bekerja,
+										'sektor_perusahaan' 	=> $sektor_perusahaan_bekerja,
+										'tahun_masuk' 			=> $tahun_masuk,
+										'gaji_pertama'			=> $gaji_pertama,
+										'informasi_lowongan' 	=> $informasi_lowongan,
+										'skala_relevan' 		=> $skala_relevan,
+										'pengetahuan_relevan' 	=> $pengetahuan_relevan
+								);
 
-				$query_identitas 	= $this->kuesioner_app->identitas_add_process($data_identitas);
+					$query_identitas 	= $this->kuesioner_app->alumni_add_process($data_identitas);
+					$query_bekerja 		= $this->kuesioner_app->bekerja_add_process($data_bekerja);
+
+					$this->session->set_flashdata('notif', 'Terima Kasih Anda telah mengirimkan kuesioner!');
+					redirect(base_url('form_kuesioner/'));
+				}else{
+					$data_identitas = array(
+									'nim' 		=> $nim,
+									'nama' 		=> $nama,
+									'lulus' 	=> $lulus,
+									'no_hp'		=> $no_hp,
+									'email'		=> $email,
+									'alamat'	=> $alamat,
+									'kegiatan'	=> $kegiatan
+								);
+
+					$data_bekerja 	= array(
+										'nim' 					=> $nim,
+										'nama_perusahaan' 		=> $nama_perusahaan_bekerja,
+										'alamat_perusahaan' 	=> $alamat_perusahaan_bekerja,
+										'sektor_perusahaan' 	=> $sektor_perusahaan_bekerja,
+										'tahun_masuk' 			=> $tahun_masuk,
+										'gaji_pertama'			=> $gaji_pertama,
+										'informasi_lowongan' 	=> $informasi_lowongan_lainnya,
+										'skala_relevan' 		=> $skala_relevan,
+										'pengetahuan_relevan' 	=> $pengetahuan_relevan
+								);
+
+				print_r($data_bekerja);
+
+				$query_identitas 	= $this->kuesioner_app->alumni_add_process($data_identitas);
 				$query_bekerja 		= $this->kuesioner_app->bekerja_add_process($data_bekerja);
 
-				// echo 'berhasil - Anda bekerja!';
 				$this->session->set_flashdata('notif', 'Terima Kasih Anda telah mengirimkan kuesioner!');
 				redirect(base_url('form_kuesioner/'));
+
+				}
+
+				
 
 			}else if($kegiatan == 2){
 				$nama_usaha 			= $this->input->post('nama_usaha');
@@ -113,9 +149,11 @@ class Form_kuesioner extends CI_Controller {
 									'skala_relevan' => $skala_relevan_usaha
 								);
 
-				$query_identitas 	= $this->kuesioner_app->identitas_add_process($data_identitas);
+				$query_identitas 	= $this->kuesioner_app->alumni_add_process($data_identitas);
 				$query_usaha 		= $this->kuesioner_app->usaha_add_process($data_usaha);
-				echo 'berhasil - Anda Membuka Usaha!';
+
+				$this->session->set_flashdata('notif', 'Terima Kasih Anda telah mengirimkan kuesioner!');
+				redirect(base_url('form_kuesioner/'));
 			}else{
 				$kegiatan_belum_bekerja 	= $this->input->post('kegiatan_belum_bekerja');
 				$saran_pekerjaan 			= $this->input->post('saran_pekerjaan');
@@ -138,9 +176,11 @@ class Form_kuesioner extends CI_Controller {
 										'saran_kampus'				=> $saran_kampus
 									);
 
-				$query_identitas 			= $this->kuesioner_app->identitas_add_process($data_identitas);
+				$query_identitas 			= $this->kuesioner_app->alumni_add_process($data_identitas);
 				$query_belum_bekerja 		= $this->kuesioner_app->belum_bekerja_add_process($data_belum_bekerja);
-				echo 'Berhasil - Anda Belum Bekerja';
+				
+				$this->session->set_flashdata('notif', 'Terima Kasih Anda telah mengirimkan kuesioner!');
+				redirect(base_url('form_kuesioner/'));
 			}
 
 		}
@@ -148,7 +188,7 @@ class Form_kuesioner extends CI_Controller {
 	}
 
 	public function nim_check($str){
-		if ($this->kuesioner_app->identitas_row_check('nim', $str) > 0){
+		if ($this->kuesioner_app->alumni_row_check('nim', $str) > 0){
 			$this->form_validation->set_message('nim_check', 'NIM yang dipakai sudah digunakan!');
 			return FALSE;
 		}else{

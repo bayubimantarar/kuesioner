@@ -4,13 +4,8 @@
   <li><a href="<?php echo base_url('home'); ?>">Beranda</a></li>
   <li class="active">Kuesioner</li>
 </ol>
-<!-- <?php if($this->session->flashdata('notif')):?>
-<div class="alert alert-success" role="alert">
-    <p><?php echo $this->session->flashdata('notif'); ?></p>
-</div>
-<?php endif; ?> -->
 <?php if($this->session->flashdata('notif')): ?>
-<div class="alert alert-success alert-dismissible" role="alert">
+<div class="alert alert-success alert-dismissible" role="alert" id="notif">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <strong><?php echo $this->session->flashdata('notif'); ?></strong>
 </div>
@@ -33,7 +28,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <?php echo form_open(base_url('form_kuesioner/kirim')); ?>
                                     <h1><b>Identitas Alumni</b></h1> 
                                     <hr>
@@ -177,33 +172,37 @@
                                                     <input type="radio" name="informasi_lowongan" value="Pengumuman Di Kampus"> 5. Pengumuman Di Kampus
                                                 </div>
                                             </div>
-                                            <!-- <div class="form-inline">
+                                            <div class="form-inline">
                                                 <div class="row">
                                                     <div class="col-md-9">
-                                                        <input type="radio" name="informasi_lowongan" value="">Lainnya <input type="text" class="form-control">
+                                                        <input type="radio" name="informasi_lowongan"> Lainnya <input type="text" name="informasi_lowongan_lainnya" id="informasi_lowongan_lainnya_text" class="form-control">
                                                     </div>
                                                 </div>
-                                            </div> -->
+                                            </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Menurut Anda dalam skala 1-5 (1=sangat tidak relevan, dan 5=sangat relevan, bagaimana relevansi pekerjaan Anda dengan latar belakang pendidikan Anda?</label>
                                             <div class="row">
-                                                <div class="col-md-9">
+                                                <div class="col-md-6">
+                                                <label>Menurut Anda dalam skala 1-5 (1=sangat tidak relevan, dan 5=sangat relevan) bagaimana relevansi pekerjaan Anda dengan latar belakang pendidikan Anda?</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
                                                     <input type="radio" name="skala_relevan" value="Sangat Tidak Relevan"> 1. Sangat Tidak Relevan
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-9">
+                                                <div class="col-md-3">
                                                     <input type="radio" name="skala_relevan" value="Tidak Relevan"> 2. Tidak Relevan
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-9">
+                                                <div class="col-md-3">
                                                     <input type="radio" name="skala_relevan" value="Tidak Tahu"> 3. Tidak Tahu
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-9">
+                                                <div class="col-md-3">
                                                     <input type="radio" name="skala_relevan" value="Relevan"> 4. Relevan
                                                 </div>
                                             </div>
@@ -214,10 +213,10 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Menurut Anda, pengetahuan/ kemampuan/ keterampilan apa yang anda dapatkan dari bangku kuliah yang paling relevan dengan pekerjaan Anda saat ini?</label>
                                             <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="text" name="pengetahuan_relevan" class="form-control">
+                                                <div class="col-md-7">
+                                                <label>Menurut Anda, pengetahuan/ kemampuan/ keterampilan apa yang anda dapatkan dari bangku kuliah yang paling relevan dengan pekerjaan Anda saat ini?</label>
+                                                     <textarea name="pengetahuan_relevan" class="form-control" rows="5"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -360,9 +359,44 @@
                                     </div>
                                     <!-- ##### -->
 
+                                    <!-- <div class="form-group"> -->
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                            <h1>Penilaian Kampus terhadap Alumni</h1>
+                                                <table class="table table-hover">
+                                                        <tr>
+                                                            <td colspan="2"><center>Dimensi</center></td>
+                                                            <td colspan="3"><center>Kinerja Prodi Teknik Informatika / Sistem Informasi S1</center></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2">Product</td>
+                                                            <td><center>A</center></td>
+                                                            <td><center>B</center></td>
+                                                            <td><center>C</center></td>
+                                                        </tr>
+                                                        <?php
+                                                            $no=0; 
+                                                            foreach ($pertanyaan as $row):
+                                                            $no++;
+                                                        ?>
+                                                        <tr>
+                                                            <td><?php echo $no; ?></td>
+                                                            <td><?php echo $row['pertanyaan']; ?></td>
+                                                            <td><center><input type="radio" name="A" value="" placeholder="" group="jawaban"></center></td>
+                                                            <td><center><input type="radio" name="B" value="" placeholder="" group="jawaban"></center></td>
+                                                            <td><center><input type="radio" name="C" value="" placeholder="" group="jawaban"></center></td>
+                                                        </tr>
+                                                        <?php 
+                                                            endforeach;
+                                                        ?>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    <!-- </div> -->
+
                                     <input type="submit" name="kirim" value="Kirim" class="btn btn-primary" onclick="return confirm('Apakah data sudah benar?');">
                                     <input type="reset" name="Hapus" value="Hapus" class="btn btn-danger">
-                                    <p><br>*Terima Kasih atas ketersediaan Anda meluangkan waktu untuk mengisi keusioner ini sebagai umpan balik dan pelacakan alumni STMIK Bandung*</p>
+                                    <p><br>*Terima Kasih atas ketersediaan Anda meluangkan waktu untuk mengisi keusioner ini sebagai umpan balik bagi pengembangan Program Studi S1 Teknik Informatika/ Sistem Informasi dan pelacakan alumni STMIK Bandung *</p>
                                     <?php echo form_close(); ?>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->

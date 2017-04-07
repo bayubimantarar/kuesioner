@@ -9,8 +9,14 @@ class Kuesioner_app extends CI_Model {
 		return $query;
 	}
 
-	public function get_data_identitas(){
-		$query = $this->db->get('identitas')->result_array();
+	public function get_data_alumni(){
+		$query = $this->db->get('alumni')->result_array();
+
+		return $query;
+	}
+
+	public function get_data_pertanyaan(){
+		$query = $this->db->get('pertanyaan')->result_array();
 
 		return $query;
 	}
@@ -29,14 +35,21 @@ class Kuesioner_app extends CI_Model {
 		return $data;
 	}
 
-	public function get_json(){
+	public function get_kegiatan_alumni(){
 		$query = $this->db->query('
 							SELECT
-							(SELECT COUNT(kegiatan) FROM identitas WHERE kegiatan=1) as bekerja,
-							(SELECT COUNT(kegiatan) FROM identitas WHERE kegiatan=2) as buka_usaha,
-							(SELECT COUNT(kegiatan) FROM identitas WHERE kegiatan=3) as belum_bekerja')->result_array();
+							(SELECT COUNT(*) FROM alumni) as total_alumni,
+							(SELECT COUNT(kegiatan) FROM alumni WHERE kegiatan=1) as bekerja,
+							(SELECT COUNT(kegiatan) FROM alumni WHERE kegiatan=2) as buka_usaha,
+							(SELECT COUNT(kegiatan) FROM alumni WHERE kegiatan=3) as belum_bekerja')->result_array();
 
 		return $query;
+	}
+
+	public function get_total_alumni(){
+		$query = $this->db->get('alumni')->num_rows();
+
+		return $query;		
 	}
 
 	public function users_row_check($field, $str){
@@ -45,8 +58,8 @@ class Kuesioner_app extends CI_Model {
 		return $query;
 	}
 
-	public function identitas_row_check($field, $str){
-		$query = $this->db->get_where('identitas', array($field => $str))->num_rows();
+	public function alumni_row_check($field, $str){
+		$query = $this->db->get_where('alumni', array($field => $str))->num_rows();
 
 		return $query;
 	}
@@ -57,8 +70,8 @@ class Kuesioner_app extends CI_Model {
 		return $query;
 	}
 
-	public function identitas_add_process($data){
-		$query = $this->db->insert('identitas', $data);
+	public function alumni_add_process($data){
+		$query = $this->db->insert('alumni', $data);
 
 		return $query;
 	}

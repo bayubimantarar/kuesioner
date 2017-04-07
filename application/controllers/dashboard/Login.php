@@ -52,6 +52,11 @@ class Login extends CI_Controller {
 
 	}
 
+	public function logout(){
+		$this->session->sess_destroy();
+		redirect(base_url('dashboard/login'));
+	}
+
 	public function username_check($str){
 		$users_detail = $this->kuesioner_app->get_users_detail($this->username_temp);
 		if($users_detail){
