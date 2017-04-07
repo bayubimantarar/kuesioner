@@ -3,7 +3,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Tables <a href="<?php echo base_url('dashboard/users/form_add_users'); ?>" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah Data</a></h1>
+                    <h1 class="page-header">Tables <a href="<?php echo base_url('dashboard/users/form_add'); ?>" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah Data</a></h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>

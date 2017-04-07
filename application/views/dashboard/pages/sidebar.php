@@ -22,6 +22,9 @@
                         <a href="<?php echo base_url('dashboard/users/index'); ?>">Users</a>
                     </li>
                     <li>
+                        <a href="<?php echo base_url('dashboard/pertanyaan/index'); ?>">Pertanyaan</a>
+                    </li>
+                    <li>
                         <a href="<?php echo base_url('dashboard/alumni/index'); ?>">Alumni</a>
                     </li>
                 </ul><!-- /.nav-second-level -->

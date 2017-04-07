@@ -24,7 +24,7 @@ class Users extends CI_Controller {
 		$this->load->view('dashboard/pages/footer');
 	}
 
-	public function form_add_users(){
+	public function form_add(){
 		$data = array(
 				'title' => 'From add users | Website Kuesioner'
 				);
@@ -32,7 +32,7 @@ class Users extends CI_Controller {
 		$this->load->view('dashboard/pages/header', $data);
 		$this->load->view('dashboard/pages/navbar');
 		$this->load->view('dashboard/pages/sidebar');
-		$this->load->view('dashboard/users/form_add_users');
+		$this->load->view('dashboard/users/form');
 		$this->load->view('dashboard/pages/footer');		
 	}
 

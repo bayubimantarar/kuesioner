@@ -363,22 +363,31 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                             <h1>Penilaian Kampus terhadap Alumni</h1>
-                                                <table class="table table-hover">
+                                                <table class="table table-hover table-bordered">
                                                         <tr>
                                                             <td colspan="2"><center>Dimensi</center></td>
                                                             <td colspan="3"><center>Kinerja Prodi Teknik Informatika / Sistem Informasi S1</center></td>
                                                         </tr>
                                                         <tr>
-                                                            <td colspan="2">Product</td>
+                                                            <td colspan="2">Kategori Pertanyaan</td>
                                                             <td><center>A</center></td>
                                                             <td><center>B</center></td>
                                                             <td><center>C</center></td>
                                                         </tr>
                                                         <?php
-                                                            $no=0; 
+                                                            $no=0;
+                                                            $current_kategori = NULL;
                                                             foreach ($pertanyaan as $row):
                                                             $no++;
                                                         ?>
+                                                        <?php 
+                                                            if ($row['nama_kategori']!=$current_kategori):
+                                                            $current_kategori = $row['nama_kategori'];
+                                                        ?>
+                                                        <tr>
+                                                            <td colspan="5"><b><?php echo $current_kategori; ?></b></td>
+                                                        </tr>
+                                                        <?php endif; ?>
                                                         <tr>
                                                             <td><?php echo $no; ?></td>
                                                             <td><?php echo $row['pertanyaan']; ?></td>

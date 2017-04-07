@@ -16,7 +16,13 @@ class Kuesioner_app extends CI_Model {
 	}
 
 	public function get_data_pertanyaan(){
-		$query = $this->db->get('pertanyaan')->result_array();
+		$query = $this->db->query('SELECT pt.*, kt.* FROM pertanyaan pt INNER JOIN kategori_pertanyaan kt ON pt.id_kategori = kt.id')->result_array();
+
+		return $query;
+	}
+
+	public function get_data_kategori(){
+		$query = $this->db->get('kategori_pertanyaan')->result_array();
 
 		return $query;
 	}
@@ -66,6 +72,12 @@ class Kuesioner_app extends CI_Model {
 
 	public function users_add_process($data){
 		$query = $this->db->insert('users', $data);
+
+		return $query;
+	}
+
+	public function pertanyaan_add_process($data){
+		$query = $this->db->insert('pertanyaan', $data);
 
 		return $query;
 	}
