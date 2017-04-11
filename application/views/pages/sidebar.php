@@ -13,30 +13,24 @@
                 <!-- /input-group -->
             </li>
             <li>
-                <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-table fa-fw"></i> Kuesioner<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="<?php echo base_url('kuesioner/index'); ?>">Kuesioner</a>
+                    </li>
+                </ul><!-- /.nav-second-level -->
             </li>
             <li>
                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="flot.html">Flot Charts</a>
-                        </li>
-                        <li>
-                            <a href="morris.html">Morris.js Charts</a>
+                            <a href="<?php echo base_url('dashboard/alumni/kegiatan_alumni'); ?>">Kegiatan Alumni</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-table fa-fw"></i> Tables<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="flot.html">Flot Charts</a>
-                    </li>
-                    <li>
-                        <a href="morris.html">Morris.js Charts</a>
-                    </li>
-                </ul><!-- /.nav-second-level -->
             </li>
         </ul>
     </div><!-- /.sidebar-collapse -->

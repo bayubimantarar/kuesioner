@@ -6,7 +6,7 @@ class Main_library{
 	public function check_login(){
 		$_this =& get_instance();
 		if($_this->session->userdata('login_status') != TRUE){
-			redirect(base_url('dashboard/login'));
+			redirect(base_url('login'));
 		}
 	}
 

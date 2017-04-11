@@ -3,6 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Kuesioner_app extends CI_Model {
 
+	/**
+		Author: Bayu Bimantara
+		Function: get data (query builder, raw query)
+		========================================================================
+	**/
 	public function get_data_users(){
 		$query = $this->db->get('users')->result_array();
 
@@ -10,16 +15,11 @@ class Kuesioner_app extends CI_Model {
 	}
 
 	public function get_data_alumni(){
-		$query = $this->db->get('alumni')->result_array();
+		$query = $this->db->query('SELECT * FROM alumni ORDER BY nim ASC')->result_array();
 
 		return $query;
 	}
-
-	public function get_data_pertanyaan(){
-		$query = $this->db->query('SELECT pt.*, kt.* FROM pertanyaan pt INNER JOIN kategori_pertanyaan kt ON pt.id_kategori = kt.id')->result_array();
-
-		return $query;
-	}
+	
 
 	public function get_data_kategori(){
 		$query = $this->db->get('kategori_pertanyaan')->result_array();
@@ -27,9 +27,9 @@ class Kuesioner_app extends CI_Model {
 		return $query;
 	}
 
-	public function get_users_detail($username){
-		$this->db->where('username', $username);
-		$query = $this->db->get('users');
+	public function get_alumni_detail($nim){
+		$this->db->where('nim', $nim);
+		$query = $this->db->get('alumni');
 
 		if($query->num_rows() > 0){
 			$data = $query->row();
@@ -39,6 +39,12 @@ class Kuesioner_app extends CI_Model {
 		}
 
 		return $data;
+	}
+
+	public function get_alumni_byid($nim){
+		$query = $this->db->get_where('alumni', array('nim' => $nim))->result_array();
+		
+		return $query;	
 	}
 
 	public function get_kegiatan_alumni(){
@@ -57,7 +63,15 @@ class Kuesioner_app extends CI_Model {
 
 		return $query;		
 	}
+	/**
+		========================================================================
+	**/
 
+	/**
+		Author: Bayu Bimantara
+		Function: Row Check
+		========================================================================
+	**/
 	public function users_row_check($field, $str){
 		$query = $this->db->get_where('users', array($field => $str))->num_rows();
 
@@ -69,15 +83,17 @@ class Kuesioner_app extends CI_Model {
 
 		return $query;
 	}
+	/**
+		========================================================================
+	**/
 
+	/**
+		Author: Bayu Bimantara
+		Function: add process (insert data)
+		========================================================================
+	**/
 	public function users_add_process($data){
 		$query = $this->db->insert('users', $data);
-
-		return $query;
-	}
-
-	public function pertanyaan_add_process($data){
-		$query = $this->db->insert('pertanyaan', $data);
 
 		return $query;
 	}
@@ -88,23 +104,14 @@ class Kuesioner_app extends CI_Model {
 		return $query;
 	}
 
-	public function bekerja_add_process($data){
-		$query = $this->db->insert('bekerja', $data);
+	public function token_add_process($data){
+		$query = $this->db->insert('token', $data);
 
 		return $query;
 	}
-
-	public function usaha_add_process($data){
-		$query = $this->db->insert('usaha', $data);
-
-		return $query;
-	}
-
-	public function belum_bekerja_add_process($data){
-		$query = $this->db->insert('belum_bekerja', $data);
-
-		return $query;
-	}
+	/**
+		========================================================================
+	**/
 	
 }
 
