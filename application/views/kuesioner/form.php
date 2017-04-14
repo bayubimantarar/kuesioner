@@ -105,7 +105,7 @@
                                         <?php
                                             endforeach;
                                         ?>
-                                        <button type="submit" class="btn btn-primary btn-sm" onclick="return confirm('Anda Yakin Menambah Data Ini?');">Simpan</button>
+                                        <button type="submit" class="btn btn-primary btn-sm" onclick="return confirm('Anda Yakin Menambah Data Ini?');">Kirim</button>
                                         <button type="reset" class="btn btn-danger btn-sm">Hapus</button>
                                     </form>
                                 </div>

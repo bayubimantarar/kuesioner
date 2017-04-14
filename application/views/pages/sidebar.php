@@ -13,24 +13,13 @@
                 <!-- /input-group -->
             </li>
             <li>
-                <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                <a href="<?php echo base_url('dashboard/index') ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-table fa-fw"></i> Kuesioner<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="<?php echo base_url('kuesioner/index'); ?>">Kuesioner</a>
-                    </li>
-                </ul><!-- /.nav-second-level -->
+                <a href="<?php echo base_url('kuesioner/index'); ?>"><i class="fa fa-circle-o fa-fw"></i>Kuesioner</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="<?php echo base_url('dashboard/alumni/kegiatan_alumni'); ?>">Kegiatan Alumni</a>
-                        </li>
-                    </ul>
-                    <!-- /.nav-second-level -->
+                <a href="<?php echo base_url('chart/index'); ?>"><i class="fa fa-circle-o fa-fw"></i>Chart</a>
             </li>
         </ul>
     </div><!-- /.sidebar-collapse -->

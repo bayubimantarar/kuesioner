@@ -1,428 +1,231 @@
-<body>
 <div class="container">
-<ol class="breadcrumb">
-  <li><a href="<?php echo base_url('home'); ?>">Beranda</a></li>
-  <li class="active">Kuesioner</li>
-</ol>
 <?php if($this->session->flashdata('notif')): ?>
 <div class="alert alert-success alert-dismissible" role="alert" id="notif">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <strong><?php echo $this->session->flashdata('notif'); ?></strong>
 </div>
 <?php endif; ?>
-    <div id="wrapper">
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Kuesioner Penelusuran Alumni<br>
-                    Sekolah Tinggi Manajemen dan Informatika Bandung</h1>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">TRACER STUDY KOMPETENSI LULUSAN STMIK BANDUNG</h1>
+        </div><!-- /.col-lg-12 -->
+    </div><!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Form Pelacakan Alumni
                 </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            Form Pelacakan Alumni
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <?php echo form_open(base_url('form_kuesioner/kirim')); ?>
-                                    <h1><b>Identitas Alumni</b></h1> 
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <?php echo form_open(base_url('form_kuesioner/add_process')); ?>
+                                    <h2><b>Identitas Alumni</b></h2>
                                     <hr>
                                     <div class="form-group">
                                         <label>NIM<?php echo form_error('nim'); ?></label>
                                         <div class="row">
-                                            <div class="col-md-3">
-                                                <input type="text" name="nim" class="form-control" value="<?php echo set_value('nim'); ?>">
+                                            <div class="col-md-2">
+                                                <input type="text" name="nim" class="form-control" value="<?php echo $user_info['nim']; ?>" readonly>
+                                                <input type="hidden" name="token" class="form-control" value="<?php echo $user_info['token']; ?>" readonly>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Nama Lengkap<?php echo form_error('nama'); ?></label>
                                         <div class="row">
-                                            <div class="col-md-9">
-                                                <input type="text" name="nama" class="form-control" value="<?php echo set_value('nama'); ?>">
+                                            <div class="col-md-3">
+                                                <input type="text" name="nama" class="form-control" value="<?php echo $user_info['nama']; ?>" readonly>
                                             </div>
                                         </div>
                                     </div>
+                                    <h2><b>Identitas Perusahaan</b></h2>
+                                    <hr>
                                     <div class="form-group">
-                                        <label>Lulus Tahun</label>
+                                        <label>Nama perusahaan<?php echo form_error('nama_perusahaan'); ?></label>
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <select name="lulus" class="form-control">
-                                                <?php
-                                                    for($i=2015; $i>=1993; $i-=1):     
-                                                ?>
-                                                <option value="<?php echo $i; ?>"><?php echo $i ?></option>
-                                                <?php 
-                                                    endfor; 
-                                                ?>     
+                                                <input type="text" name="nama_perusahaan" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Bergerak di bidang<?php echo form_error('bidang'); ?></label>
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <select name="bidang" id="bidang" class="form-control">
+                                                    <option value="1">IT</option>
+                                                    <option value="2">NON IT</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>No HP<?php echo form_error('no_hp'); ?></label>
+                                        <label>Tahun masuk (Masuk perusahaan) <?php echo form_error('tahun_masuk'); ?></label>
                                         <div class="row">
-                                            <div class="col-md-4">
-                                                <input type="text" name="no_hp" class="form-control" value="<?php echo set_value('no_hp'); ?>">
+                                            <div class="col-md-3">
+                                                <input type="text" name="tahun_masuk" class="form-control">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Email<?php echo form_error('email'); ?></label>
-                                        <div class="row">
-                                            <div class="col-md-9">
-                                                <input type="text" name="email" class="form-control" value="<?php echo set_value('email'); ?>">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Alamat<?php echo form_error('alamat'); ?></label>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <textarea name="alamat" class="form-control" rows="5"><?php echo set_value('alamat'); ?></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Kegiatan Setelah Lulus</label>
-                                        <div class="row">
-                                            <div class="col-md-9">
-                                                <select name="kegiatan" class="form-control" id="status">
-                                                    <option value="1">Bekerja</option>
-                                                    <option value="2">Membuka Usaha</option>
-                                                    <option value="3">Belum Bekerja</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Panel Bekerja -->
-                                    <div class="panel-q 1">
-                                    <h1><b>Bekerja</b></h1>
-                                    <hr>
-                                        <div class="form-group">
-                                            <label>Nama Perusahaan</label>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="text" name="nama_perusahaan_bekerja" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Alamat Perusahaan</label>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <textarea name="alamat_perusahaan_bekerja" class="form-control" rows="5"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Sektor Perusahaan/ Industri</label>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="text" name="sektor_perusahaan_bekerja" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Tahun Masuk Kerja</label>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="text" name="tahun_masuk" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Gaji Pertama</label>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="text" name="gaji_pertama" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Darimana Anda mendapatkan informasi lowongan pekerjaan (pilih yang sesuai)</label>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="radio" name="informasi_lowongan" value="Bursa Kerja"> 1. Bursa Kerja
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="radio" name="informasi_lowongan" value="Media Masa"> 2. Media Masa
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="radio" name="informasi_lowongan" value="Mailing List"> 3. Mailing List
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="radio" name="informasi_lowongan" value="Pengumuman Di Web"> 4. Pengumuman Di Web
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="radio" name="informasi_lowongan" value="Pengumuman Di Kampus"> 5. Pengumuman Di Kampus
-                                                </div>
-                                            </div>
-                                            <div class="form-inline">
-                                                <div class="row">
-                                                    <div class="col-md-9">
-                                                        <input type="radio" name="informasi_lowongan"> Lainnya <input type="text" name="informasi_lowongan_lainnya" id="informasi_lowongan_lainnya_text" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                <label>Menurut Anda dalam skala 1-5 (1=sangat tidak relevan, dan 5=sangat relevan) bagaimana relevansi pekerjaan Anda dengan latar belakang pendidikan Anda?</label>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <input type="radio" name="skala_relevan" value="Sangat Tidak Relevan"> 1. Sangat Tidak Relevan
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <input type="radio" name="skala_relevan" value="Tidak Relevan"> 2. Tidak Relevan
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <input type="radio" name="skala_relevan" value="Tidak Tahu"> 3. Tidak Tahu
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <input type="radio" name="skala_relevan" value="Relevan"> 4. Relevan
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="radio" name="skala_relevan" value="Sangat Relevan"> 5. Sangat Relevan
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-7">
-                                                <label>Menurut Anda, pengetahuan/ kemampuan/ keterampilan apa yang anda dapatkan dari bangku kuliah yang paling relevan dengan pekerjaan Anda saat ini?</label>
-                                                     <textarea name="pengetahuan_relevan" class="form-control" rows="5"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ##### -->
-
-                                    <!-- Panel Usaha -->
-                                    <div class="panel-q 2">
-                                    <h1><b>Membuka Usaha</b></h1>
-                                    <hr>
-                                        <div class="form-group">
-                                            <label>Nama Perusahaan</label>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="text" name="nama_usaha" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Alamat Perusahaan</label>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <textarea name="alamat_usaha" class="form-control" rows="5"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Bidang Usaha</label>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="text" name="bidang_usaha" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Jumlah Karyawan (Termasuk pemilik)</label>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="text" name="jumlah_karyawan" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Besar omzet per bulan</label>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="text" name="omzet_perbulan" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Berapa besar (rupiah) pengeluaran rata-rata pebulan Bpk/Ibu/Sdr</label>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="text" name="pengeluaran_perbulan" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Menurut Anda dalam skala 1-5 (1=sangat tidak relevan, dan 5=sangat relevan, bagaimana relevansi pekerjaan Anda dengan latar belakang pendidikan Anda?</label>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="radio" name="skala_relevan_usaha" value="Sangat Tidak Relevan"> 1. Sangat Tidak Relevan
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="radio" name="skala_relevan_usaha" value="Tidak Relevan"> 2. Tidak Relevan
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="radio" name="skala_relevan_usaha" value="Tidak Tahu"> 3. Tidak Tahu
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="radio" name="skala_relevan_usaha" value="Relevan"> 4. Relevan
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="radio" name="skala_relevan_usaha" value="Sangat Relevan"> 5. Sangat Relevan
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ##### -->
-
-                                    <!-- Panel Belum Bekerja -->
-                                    <div class="panel-q 3">
-                                    <h1><b>Belum Bekerja</b></h1>
-                                    <hr>
-                                        <div class="form-group">
-                                            <label>Kegiatan yang Anda lakukan sekarang</label>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="radio" name="kegiatan_belum_bekerja" value="Mencari pekerjaan yang sesuai"> 1. Mencari pekerjaan yang sesuai
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="radio" name="kegiatan_belum_bekerja" value="Mencari sekolah"> 2. Mencari sekolah
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="radio" name="kegiatan_belum_bekerja" value="Mengikuti suami (menjadi ibu rumah tangga)"> 3. Mengikuti suami (menjadi ibu rumah tangga)
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input type="radio" name="kegiatan_belum_bekerja" value="Mebantu orang tua"> 4. Membantu orang tua
-                                                </div>
-                                            </div>
-                                            <!-- <div class="form-inline">
-                                                <div class="row">
-                                                    <div class="col-md-9">
-                                                        Lainnya <input type="text" name="" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div> -->
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Jika Anda sedang <u>mencari pekerjaan</u>, menurut Anda apa yang harus dilakukan oleh Jurusan/ Fakultas/ Universitas supaya Anda bisa mendapatkan pekerjaan dengan lebih cepat?</label>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <textarea name="saran_pekerjaan" class="form-control" rows="5"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Adakah saran perbaikan lain untuk kampus?</label>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <textarea name="saran_kampus" class="form-control" rows="5"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ##### -->
-
-                                    <!-- <div class="form-group"> -->
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                            <h1>Penilaian Kampus terhadap Alumni</h1>
-                                                <table class="table table-hover table-bordered">
-                                                        <tr>
-                                                            <td colspan="2"><center>Dimensi</center></td>
-                                                            <td colspan="3"><center>Kinerja Prodi Teknik Informatika / Sistem Informasi S1</center></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="2">Kategori Pertanyaan</td>
-                                                            <td><center>A</center></td>
-                                                            <td><center>B</center></td>
-                                                            <td><center>C</center></td>
-                                                        </tr>
-                                                        <?php
-                                                            $no=0;
-                                                            $current_kategori = NULL;
-                                                            foreach ($pertanyaan as $row):
-                                                            $no++;
-                                                        ?>
-                                                        <?php 
-                                                            if ($row['nama_kategori']!=$current_kategori):
-                                                            $current_kategori = $row['nama_kategori'];
-                                                        ?>
-                                                        <tr>
-                                                            <td colspan="5"><b><?php echo $current_kategori; ?></b></td>
-                                                        </tr>
-                                                        <?php endif; ?>
-                                                        <tr>
-                                                            <td><?php echo $no; ?></td>
-                                                            <td><?php echo $row['pertanyaan']; ?></td>
-                                                            <td><center><input type="radio" name="A" value="" placeholder="" group="jawaban"></center></td>
-                                                            <td><center><input type="radio" name="B" value="" placeholder="" group="jawaban"></center></td>
-                                                            <td><center><input type="radio" name="C" value="" placeholder="" group="jawaban"></center></td>
-                                                        </tr>
-                                                        <?php 
-                                                            endforeach;
-                                                        ?>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h2><b>Kompetensi Manajemen dan Profesionalisme</b></h2>
+                                                <table class="table table-bordered">
+                                                <tr>
+                                                    <th rowspan="2"><center><p style="margin-top:15px">No</p></center></th>
+                                                    <th rowspan="2"><center><p style="margin-top:15px">Jenis Kemampuan</p></center></th>
+                                                    <th colspan="4"><center>Kualifikasi</center></th>
+                                                </tr>
+                                                <tr>
+                                                    <td><center>Sangat Baik</center></td>
+                                                    <td><center>Baik</center></td>
+                                                    <td><center>Cukup</center></td>
+                                                    <td><center>Kurang</center></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Integritas (Etika & Moral)</td>
+                                                    <td><center><input type="radio" name="mp1" value="4"></center></td>
+                                                    <td><center><input type="radio" name="mp1" value="3"></center></td>
+                                                    <td><center><input type="radio" name="mp1" value="2"></center></td>
+                                                    <td><center><input type="radio" name="mp1" value="1"></center></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Keahlian berdasarkan bidang ilmu (profesionalisme)</td>
+                                                    <td><center><input type="radio" name="mp2" value="4"></center></td>
+                                                    <td><center><input type="radio" name="mp2" value="3"></center></td>
+                                                    <td><center><input type="radio" name="mp2" value="2"></center></td>
+                                                    <td><center><input type="radio" name="mp2" value="1"></center></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>Bahasa Inggris</td>
+                                                    <td><center><input type="radio" name="mp3" value="4"></center></td>
+                                                    <td><center><input type="radio" name="mp3" value="3"></center></td>
+                                                    <td><center><input type="radio" name="mp3" value="2"></center></td>
+                                                    <td><center><input type="radio" name="mp3" value="1"></center></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>Penggunaan Teknologi Informasi</td>
+                                                    <td><center><input type="radio" name="mp4" value="4"></center></td>
+                                                    <td><center><input type="radio" name="mp4" value="3"></center></td>
+                                                    <td><center><input type="radio" name="mp4" value="2"></center></td>
+                                                    <td><center><input type="radio" name="mp4" value="1"></center></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>Komunikasi</td>
+                                                    <td><center><input type="radio" name="mp5" value="4"></center></td>
+                                                    <td><center><input type="radio" name="mp5" value="3"></center></td>
+                                                    <td><center><input type="radio" name="mp5" value="2"></center></td>
+                                                    <td><center><input type="radio" name="mp5" value="1"></center></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td>Kerjasama tim</td>
+                                                    <td><center><input type="radio" name="mp6" value="4"></center></td>
+                                                    <td><center><input type="radio" name="mp6" value="3"></center></td>
+                                                    <td><center><input type="radio" name="mp6" value="2"></center></td>
+                                                    <td><center><input type="radio" name="mp6" value="1"></center></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td>Pengembangan diri</td>
+                                                    <td><center><input type="radio" name="mp7" value="4"></center></td>
+                                                    <td><center><input type="radio" name="mp7" value="3"></center></td>
+                                                    <td><center><input type="radio" name="mp7" value="2"></center></td>
+                                                    <td><center><input type="radio" name="mp7" value="1"></center></td>
+                                                </tr>
                                                 </table>
                                             </div>
                                         </div>
-                                    <!-- </div> -->
 
+                                        <!-- <div class="panel-q 1">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                            <h2><b>Kompetensi teknologi informasi (untuk perusahaan teknologi informasi )</b></h2>
+                                                <table class="table table-bordered">
+                                                <tr>
+                                                    <th rowspan="2"><center><p style="margin-top:15px">No</p></center></th>
+                                                    <th rowspan="2"><center><p style="margin-top:15px">Jenis Kemampuan</p></center></th>
+                                                    <th colspan="4"><center>Kualifikasi</center></th>
+                                                </tr>
+                                                <tr>
+                                                    <td>Sangat Baik</td>
+                                                    <td>Baik</td>
+                                                    <td>Cukup</td>
+                                                    <td>Kurang</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Kemampuan dalam menguasai sekurang-kurangnya satu Bahasa pemrograman</td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>kemampuan dalam menguasai tools aplikasi pemrograman</td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>Kemampuan dalam menguasai aplikasi database</td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>kemampuan dalam mengimplementasikan rancangan database</td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>kemampuan dalam melakukan rekayasa Perangkat Lunak</td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td>Kemampuan dalam mengoperasikan berbagai sistem operasi ( Windows / Linux)</td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td>kemampuan dalam implementasi Jaringan Komputer</td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div> -->
                                     <input type="submit" name="kirim" value="Kirim" class="btn btn-primary" onclick="return confirm('Apakah data sudah benar?');">
                                     <input type="reset" name="Hapus" value="Hapus" class="btn btn-danger">
                                     <p><br>*Terima Kasih atas ketersediaan Anda meluangkan waktu untuk mengisi keusioner ini sebagai umpan balik bagi pengembangan Program Studi S1 Teknik Informatika/ Sistem Informasi dan pelacakan alumni STMIK Bandung *</p>
                                     <?php echo form_close(); ?>
-                                </div>
-                                <!-- /.col-lg-6 (nested) -->
-                            </div>
-                            <!-- /.row (nested) -->
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /#page-wrapper -->
-    </div>
-    <!-- /#wrapper -->
-</div>
-</body>
-</html>
+                                </div><!-- /.col-lg-6 (nested) -->
+                            </div><!-- /.row (nested) -->
+                        </div><!-- /.panel-body -->
+                    </div><!-- /.panel -->
+                </div><!-- /.col-lg-12 -->
+            </div><!-- /.row -->

@@ -53,7 +53,7 @@ class Kuesioner extends CI_Controller {
 
 			$message = '<p> NIM :'.$nim.'</p>
 						<p> Nama :'.$nama.'</p>
-						<p> LINK URL : http://localhost/kuesioner/form_kuesioner/'.$str.'</p>';
+						<p> LINK URL : http://localhost/kuesioner/form_kuesioner/index/'.$str.'</p>';
 						
 			$data = array(
 						'nim' => $nim,
@@ -76,11 +76,7 @@ class Kuesioner extends CI_Controller {
 
 	public function base64url_encode($data) {   
     	return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');   
-   	}   
-   
-   	public function base64url_decode($data) {   
-    	return base64_decode(str_pad(strtr($data, '-_', '+/'), strlen($data) % 4, '=', STR_PAD_RIGHT));   
-   	}   
+   	}
 
 }
 
