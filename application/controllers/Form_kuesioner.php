@@ -12,7 +12,7 @@ class Form_kuesioner extends CI_Controller {
 		$token = $this->uri->segment(3);
 
 		$data = array(
-				'user_info' => $user_info = $this->kuesioner_app->token_validation($token)
+					'user_info' => $user_info = $this->kuesioner_app->token_validation($token)
 				);
 
 		if(!$user_info){
@@ -33,38 +33,106 @@ class Form_kuesioner extends CI_Controller {
 	}
 
 	public function add_process(){
-		// $token = $this->uri->segment(3);
-		$nim = $this->input->post('nim');
-		$token = $this->input->post('token');
-		$nama_perusahaan = $this->input->post('nama_perusahaan');
-		$bidang = $this->input->post('bidang');
-		$tahun_masuk = $this->input->post('tahun_masuk');
-		$mp1 = $this->input->post('mp1');
-		$mp2 = $this->input->post('mp2');
-		$mp3 = $this->input->post('mp3');
-		$mp4 = $this->input->post('mp4');
-		$mp5 = $this->input->post('mp5');
-		$mp6 = $this->input->post('mp6');
-		$mp7 = $this->input->post('mp7');
+		$nim 				= $this->input->post('nim');
+		$jurusan 			= $this->input->post('jurusan');
+		$id_token 			= $this->input->post('id_token');
+		$token 				= $this->input->post('token');
+		$nama_perusahaan 	= $this->input->post('nama_perusahaan');
+		$bidang 			= $this->input->post('bidang');
+		$tahun_masuk 		= $this->input->post('tahun_masuk');
+		$sebagai 			= $this->input->post('sebagai');
+		$tanggal_kuesioner 	= $this->input->post('tanggal_kuesioner');
 
-		$data = array(
-					'nim' => $nim,
-					'token' => $token,
-					'nama_perusahaan' => $nama_perusahaan,
-					'bidang' => $bidang,
-					'tahun_masuk' => $tahun_masuk,
-					'mp1' => $mp1,
-					'mp2' => $mp2,
-					'mp3' => $mp3,
-					'mp4' => $mp4,
-					'mp5' => $mp5,
-					'mp6' => $mp6,
-					'mp7' => $mp7
-				);
+		if($bidang==1){
+			$mp1 = $this->input->post('mp1');
+			$mp2 = $this->input->post('mp2');
+			$mp3 = $this->input->post('mp3');
+			$mp4 = $this->input->post('mp4');
+			$mp5 = $this->input->post('mp5');
+			$mp6 = $this->input->post('mp6');
+			$mp7 = $this->input->post('mp7');
+			$ti1 = $this->input->post('ti1');
+			$ti2 = $this->input->post('ti2');
+			$ti3 = $this->input->post('ti3');
+			$ti4 = $this->input->post('ti4');
+			$ti5 = $this->input->post('ti5');
+			$ti6 = $this->input->post('ti6');
+			$ti7 = $this->input->post('ti7');
 
-		// print_r($data);
+			$data = array(
+						'nim' => $nim,
+						'jurusan' => $jurusan,
+						'token' => $token,
+						'nama_perusahaan' => $nama_perusahaan,
+						'bidang' => $bidang,
+						'sebagai' => $sebagai,
+						'tahun_masuk' => $tahun_masuk,
+						'tanggal_kuesioner' => $tanggal_kuesioner,
+						'mp1' => $mp1,
+						'mp2' => $mp2,
+						'mp3' => $mp3,
+						'mp4' => $mp4,
+						'mp5' => $mp5,
+						'mp6' => $mp6,
+						'mp7' => $mp7,
+						'ti1' => $ti1,
+						'ti2' => $ti2,
+						'ti3' => $ti3,
+						'ti4' => $ti4,
+						'ti5' => $ti5,
+						'ti6' => $ti6,
+						'ti7' => $ti7
+					);
 
-		$query = $this->kuesioner_app->kuesioner_add_process($data);
+			print_r($data);
+
+			$data_token = array(
+							'status' => 1 
+						);
+
+			$query = $this->kuesioner_app->kuesioner_add_process($data);
+			$query_token = $this->kuesioner_app->token_update_process($data_token, $id_token);
+
+			redirect(base_url('form_kuesioner/success'));
+		}else{
+			$mp1 = $this->input->post('mp1');
+			$mp2 = $this->input->post('mp2');
+			$mp3 = $this->input->post('mp3');
+			$mp4 = $this->input->post('mp4');
+			$mp5 = $this->input->post('mp5');
+			$mp6 = $this->input->post('mp6');
+			$mp7 = $this->input->post('mp7');
+
+			$data = array(
+						'nim' => $nim,
+						'jurusan' => $jurusan,
+						'token' => $token,
+						'nama_perusahaan' => $nama_perusahaan,
+						'bidang' => $bidang,
+						'sebagai' => $sebagai,
+						'tahun_masuk' => $tahun_masuk,
+						'mp1' => $mp1,
+						'mp2' => $mp2,
+						'mp3' => $mp3,
+						'mp4' => $mp4,
+						'mp5' => $mp5,
+						'mp6' => $mp6,
+						'mp7' => $mp7,
+					);
+
+			$data_token = array(
+							'status' => 1 
+						);
+
+			$query = $this->kuesioner_app->kuesioner_add_process($data);
+			$query_token = $this->kuesioner_app->token_update_process($data_token, $id_token);
+
+			redirect(base_url('form_kuesioner/success'));
+		}
+	}
+
+	public function success(){
+		$this->load->view('pages/success');
 	}
 
 

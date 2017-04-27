@@ -13,8 +13,21 @@ class Kuesioner extends CI_Controller {
 
 	public function index(){
 		$data = array(
-				'title' 	=> 'Alumni | Website Kuesioner',
-				'alumni'	=> $this->kuesioner_app->get_alumni_byid($this->session->userdata('nim'))
+				'title' 		=> 'Kuesioner | Website Kuesioner',
+				'alumni'		=> $this->kuesioner_app->get_alumnitoken_byid($this->session->userdata('nim'))
+				);
+
+		$this->load->view('pages/header', $data);
+		$this->load->view('pages/navbar');
+		$this->load->view('pages/sidebar');
+		$this->load->view('kuesioner/index', $data);
+		$this->load->view('pages/footer');
+	}
+
+	public function form(){
+		$data = array(
+				'title' 	=> 'Form Kuesioner | Website Kuesioner',
+				'alumni'	=> $this->kuesioner_app->get_alumni_byid($this->session->userdata('id'))
 				);
 
 		$this->load->view('pages/header', $data);
@@ -58,18 +71,21 @@ class Kuesioner extends CI_Controller {
 			$data = array(
 						'nim' => $nim,
 						'token' => $str,
-						'created' => date('Y-m-d')
+						'created' => date('Y-m-d'),
+						'status' => 0
 					);
 
 			$query 	= $this->kuesioner_app->token_add_process($data);
 
 			$result = 	$this->email
-						->from('bayubimantara@gmail.com')
+						->from('bayubimantarar@gmail.com')
 						->to($email_pimpinan)
 						->subject("Form Kuesioner STMIK Bandung")
 						->message($message)
 						->send();
 
+			$this->session->set_flashdata('notif', 'Kuesioner berhasil dikirim!');
+			
 			redirect('kuesioner/index');
 		}
 	}

@@ -57,6 +57,7 @@ p {
 <body>
 	<div id="container">
 		<h1><?php echo $message; ?></h1>
+		<!-- <a href="#" class="btn btn-info">Kembali Ke Website</a> -->
 	</div>
 </body>
 </html>

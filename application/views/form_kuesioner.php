@@ -1,10 +1,4 @@
 <div class="container">
-<?php if($this->session->flashdata('notif')): ?>
-<div class="alert alert-success alert-dismissible" role="alert" id="notif">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong><?php echo $this->session->flashdata('notif'); ?></strong>
-</div>
-<?php endif; ?>
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">TRACER STUDY KOMPETENSI LULUSAN STMIK BANDUNG</h1>
@@ -27,7 +21,9 @@
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <input type="text" name="nim" class="form-control" value="<?php echo $user_info['nim']; ?>" readonly>
-                                                <input type="hidden" name="token" class="form-control" value="<?php echo $user_info['token']; ?>" readonly>
+                                                <input type="hidden" name="token" class="form-control" value="<?php echo $user_info['token']; ?>">
+                                                <input type="hidden" name="id_token" class="form-control" value="<?php echo $user_info['id']; ?>">
+                                                <input type="hidden" name="tanggal_kuesioner" class="form-control" value="<?php echo date('Y-m-d'); ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -39,12 +35,55 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label>Jurusan<?php echo form_error('jurusan'); ?></label>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <input type="text" name="hasil_jurusan" class="form-control" value="<?php if($user_info['jurusan']==1){echo 'Teknik Informatika';}else{echo 'Sistem Informasi';} ?>" readonly>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input type="hidden" name="jurusan" class="form-control" value="<?php echo $user_info['jurusan'] ?>" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Alamat</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <textarea name="alamat" class="form-control" rows="4" readonly><?php echo $user_info['alamat']; ?></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sebagai (Jabatan diperusahaan)</label>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <input type="text" name="sebagai" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tahun masuk (Tahun Masuk ke perusaahan) <?php echo form_error('tahun_masuk'); ?></label>
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <select name="tahun_masuk" class="form-control">
+                                                    <?php
+                                                        for($i=date('Y'); $i>=1993; $i-=1):     
+                                                    ?>
+                                                    <option value="<?php echo $i; ?>"><?php echo $i ?></option>
+                                                    <?php 
+                                                        endfor; 
+                                                    ?>     
+                                                    </select>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <h2><b>Identitas Perusahaan</b></h2>
                                     <hr>
                                     <div class="form-group">
                                         <label>Nama perusahaan<?php echo form_error('nama_perusahaan'); ?></label>
                                         <div class="row">
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <input type="text" name="nama_perusahaan" class="form-control">
                                             </div>
                                         </div>
@@ -57,14 +96,6 @@
                                                     <option value="1">IT</option>
                                                     <option value="2">NON IT</option>
                                                 </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Tahun masuk (Masuk perusahaan) <?php echo form_error('tahun_masuk'); ?></label>
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <input type="text" name="tahun_masuk" class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -143,7 +174,7 @@
                                             </div>
                                         </div>
 
-                                        <!-- <div class="panel-q 1">
+                                        <div class="panel-q 1">
                                             <div class="row">
                                                 <div class="col-md-12">
                                             <h2><b>Kompetensi teknologi informasi (untuk perusahaan teknologi informasi )</b></h2>
@@ -154,71 +185,71 @@
                                                     <th colspan="4"><center>Kualifikasi</center></th>
                                                 </tr>
                                                 <tr>
-                                                    <td>Sangat Baik</td>
-                                                    <td>Baik</td>
-                                                    <td>Cukup</td>
-                                                    <td>Kurang</td>
+                                                    <td><center>Sangat Baik</center></td>
+                                                    <td><center>Baik</center></td>
+                                                    <td><center>Cukup</center></td>
+                                                    <td><center>Kurang</center></td>
                                                 </tr>
                                                 <tr>
                                                     <td>1</td>
                                                     <td>Kemampuan dalam menguasai sekurang-kurangnya satu Bahasa pemrograman</td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td><center><input type="radio" name="ti1" value="4"></center></td>
+                                                    <td><center><input type="radio" name="ti1" value="3"></center></td>
+                                                    <td><center><input type="radio" name="ti1" value="2"></center></td>
+                                                    <td><center><input type="radio" name="ti1" value="1"></center></td>
                                                 </tr>
                                                 <tr>
                                                     <td>2</td>
-                                                    <td>kemampuan dalam menguasai tools aplikasi pemrograman</td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td>Kemampuan dalam menguasai tools aplikasi pemrograman</td>
+                                                    <td><center><input type="radio" name="ti2" value="4"></center></td>
+                                                    <td><center><input type="radio" name="ti2" value="3"></center></td>
+                                                    <td><center><input type="radio" name="ti2" value="2"></center></td>
+                                                    <td><center><input type="radio" name="ti2" value="1"></center></td>
                                                 </tr>
                                                 <tr>
                                                     <td>3</td>
                                                     <td>Kemampuan dalam menguasai aplikasi database</td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td><center><input type="radio" name="ti3" value="4"></center></td>
+                                                    <td><center><input type="radio" name="ti3" value="3"></center></td>
+                                                    <td><center><input type="radio" name="ti3" value="2"></center></td>
+                                                    <td><center><input type="radio" name="ti3" value="1"></center></td>
                                                 </tr>
                                                 <tr>
                                                     <td>4</td>
-                                                    <td>kemampuan dalam mengimplementasikan rancangan database</td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td>Kemampuan dalam mengimplementasikan rancangan database</td>
+                                                    <td><center><input type="radio" name="ti4" value="4"></center></td>
+                                                    <td><center><input type="radio" name="ti4" value="3"></center></td>
+                                                    <td><center><input type="radio" name="ti4" value="2"></center></td>
+                                                    <td><center><input type="radio" name="ti4" value="1"></center></td>
                                                 </tr>
                                                 <tr>
                                                     <td>5</td>
-                                                    <td>kemampuan dalam melakukan rekayasa Perangkat Lunak</td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td>Kemampuan dalam melakukan rekayasa Perangkat Lunak</td>
+                                                    <td><center><input type="radio" name="ti5" value="4"></center></td>
+                                                    <td><center><input type="radio" name="ti5" value="3"></center></td>
+                                                    <td><center><input type="radio" name="ti5" value="2"></center></td>
+                                                    <td><center><input type="radio" name="ti5" value="1"></center></td>
                                                 </tr>
                                                 <tr>
                                                     <td>6</td>
-                                                    <td>Kemampuan dalam mengoperasikan berbagai sistem operasi ( Windows / Linux)</td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td>Kemampuan dalam mengoperasikan berbagai sistem operasi ( Windows/ Linux)</td>
+                                                    <td><center><input type="radio" name="ti6" value="4"></center></td>
+                                                    <td><center><input type="radio" name="ti6" value="3"></center></td>
+                                                    <td><center><input type="radio" name="ti6" value="2"></center></td>
+                                                    <td><center><input type="radio" name="ti6" value="1"></center></td>
                                                 </tr>
                                                 <tr>
                                                     <td>7</td>
-                                                    <td>kemampuan dalam implementasi Jaringan Komputer</td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
-                                                    <td><center><input type="radio" name="sangat_baik"></center></td>
+                                                    <td>Kemampuan dalam implementasi Jaringan Komputer</td>
+                                                    <td><center><input type="radio" name="ti7" value="4"></center></td>
+                                                    <td><center><input type="radio" name="ti7" value="3"></center></td>
+                                                    <td><center><input type="radio" name="ti7" value="2"></center></td>
+                                                    <td><center><input type="radio" name="ti7" value="1"></center></td>
                                                 </tr>
                                                 </table>
                                             </div>
                                         </div>
-                                    </div> -->
+                                    </div>
                                     <input type="submit" name="kirim" value="Kirim" class="btn btn-primary" onclick="return confirm('Apakah data sudah benar?');">
                                     <input type="reset" name="Hapus" value="Hapus" class="btn btn-danger">
                                     <p><br>*Terima Kasih atas ketersediaan Anda meluangkan waktu untuk mengisi keusioner ini sebagai umpan balik bagi pengembangan Program Studi S1 Teknik Informatika/ Sistem Informasi dan pelacakan alumni STMIK Bandung *</p>

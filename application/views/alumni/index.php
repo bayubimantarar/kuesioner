@@ -3,7 +3,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Tables <a href="<?php echo base_url('alumni/form_add'); ?>" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah Data</a></h1>
+                    <h1 class="page-header">Tables <a href="<?php echo base_url('alumni/form_add'); ?>" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah Data</a> <a href="<?php echo base_url('alumni/form_add'); ?>" class="btn btn-sm btn-success"><i class="fa fa-file-excel-o"></i> Export Excel</a></h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -23,6 +23,8 @@
                                             <th>#</th>
                                             <th>NIM</th>
                                             <th>Nama</th>
+                                            <th>Jurusan</th>
+                                            <th>Email</th>
                                             <th>Opsi</th>
                                         </tr>
                                     </thead>
@@ -36,7 +38,17 @@
                                             <td><?php echo $no; ?></td>
                                             <td><a href="<?php echo $row['nim']; ?>"><?php echo $row['nim']; ?></a></td>
                                             <td><?php echo $row['nama']; ?></td>
-                                            <td><a href="#" class="btn btn-circle btn-danger"><i class="fa fa-remove"></i></a> <a href="#" class="btn btn-circle btn-warning"><i class="fa fa-pencil"></i></a></td>
+                                            <td>
+                                            <?php 
+                                                if($row['jurusan']==1){
+                                                    echo "Teknik Informatika";
+                                                }else{
+                                                    echo "Sistem Informasi";
+                                                }
+                                            ?>
+                                            </td>
+                                            <td><?php echo $row['email']; ?></td>
+                                            <td><a href="#" class="btn btn-circle btn-danger"><i class="fa fa-remove"></i></a> <a href="#" class="btn btn-circle btn-warning"><i class="fa fa-pencil"></i></a> <a href="#" class="btn btn-circle btn-success"><i class="fa fa-file-excel-o"></i></a></td>
                                         </tr>
                                     <?php endforeach; ?>
                                     </tbody>

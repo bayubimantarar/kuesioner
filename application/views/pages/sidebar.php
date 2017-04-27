@@ -16,10 +16,12 @@
                 <a href="<?php echo base_url('dashboard/index') ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
             <li>
-                <a href="<?php echo base_url('kuesioner/index'); ?>"><i class="fa fa-circle-o fa-fw"></i>Kuesioner</a>
-            </li>
-            <li>
-                <a href="<?php echo base_url('chart/index'); ?>"><i class="fa fa-circle-o fa-fw"></i>Chart</a>
+                <a href="#"><i class="fa fa-table fa-fw"></i> Kuesioner<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="<?php echo base_url('kuesioner/index'); ?>"><i class="fa fa-circle-o fa-fw"></i>Kuesioner</a>
+                        </li>
+                    </ul><!-- /.nav-second-level -->
             </li>
         </ul>
     </div><!-- /.sidebar-collapse -->

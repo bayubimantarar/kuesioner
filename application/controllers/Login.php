@@ -38,6 +38,7 @@ class Login extends CI_Controller {
 
 			if(!empty($query)) {
                 $login_data = array(
+                		'id' => $query->id,
                 		'nim' => $query->nim, 
                 		'nama' => $query->nama,
                 		'login_status' => TRUE 

@@ -45,7 +45,7 @@
                                                 <div class="col-md-3">
                                                     <select name="lulus" class="form-control">
                                                     <?php
-                                                        for($i=2015; $i>=1993; $i-=1):     
+                                                        for($i=date('Y')-1; $i>=1993; $i-=1):     
                                                     ?>
                                                     <option value="<?php echo $i; ?>"><?php echo $i ?></option>
                                                     <?php 
@@ -55,6 +55,8 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <h1><b>Identitas Perusahaan & Atasan</b></h1> 
+                                        <hr>
                                         <div class="form-group">
                                             <label>Nama perusahaan<?php echo form_error('nama_perusahaan'); ?></label>
                                             <div class="row">
@@ -68,7 +70,7 @@
                                                 <div class="col-md-3">
                                                     <select name="lulus" class="form-control">
                                                     <?php
-                                                        for($i=2015; $i>=1993; $i-=1):     
+                                                        for($i=date('Y'); $i>=1993; $i-=1):     
                                                     ?>
                                                     <option value="<?php echo $i; ?>"><?php echo $i ?></option>
                                                     <?php 
@@ -79,7 +81,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Sebagai<?php echo form_error('sebagai'); ?></label>
+                                            <label>Jabatan<?php echo form_error('sebagai'); ?></label>
                                             <div class="row">
                                                 <div class="col-md-5">
                                                     <input class="form-control" name="sebagai" value="<?php echo set_value('sebagai'); ?>">
