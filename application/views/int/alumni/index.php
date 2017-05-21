@@ -61,7 +61,7 @@
                                             </td>
                                             <td><?php echo $row['email']; ?></td>
                                             <td><?php echo $row['alamat']; ?></td>
-                                            <td><a href="<?php echo base_url('int/alumni/delete_process/'.$row['id']); ?>" class="btn btn-circle btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"><i class="fa fa-remove"></i></a> <a href="<?php echo base_url('int/alumni/form_edit/'.$row['id']); ?>" class="btn btn-circle btn-warning"><i class="fa fa-pencil"></i></a> <a href="#" class="btn btn-circle btn-success"><i class="fa fa-file-excel-o"></i></a></td>
+                                            <td><a href="<?php echo base_url('int/alumni/form_edit/'.$row['id']); ?>" class="btn btn-circle btn-warning"><i class="fa fa-pencil"></i></a> <a href="<?php echo base_url('int/alumni/delete_process/'.$row['id']); ?>" class="btn btn-circle btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"><i class="fa fa-remove"></i></a> <a href="<?php echo base_url('int/alumni/export_excel_byid/'.$row['id']); ?>" class="btn btn-circle btn-success"><i class="fa fa-file-excel-o"></i></a></td>
                                         </tr>
                                     <?php endforeach; ?>
                                     </tbody>

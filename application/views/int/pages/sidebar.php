@@ -24,6 +24,14 @@
                     </ul><!-- /.nav-second-level -->
             </li>
             <li>
+                <a href="#"><i class="fa fa-table fa-fw"></i> Kuesioner<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="<?php echo base_url('int/kuesioner/index'); ?>"><i class="fa fa-circle-o fa-fw"></i>Kuesioner</a>
+                        </li>
+                    </ul><!-- /.nav-second-level -->
+            </li>
+            <li>
                 <a href="#"><i class="fa fa-table fa-fw"></i> Alumni<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>

@@ -49,6 +49,10 @@ class Diagram_mp extends CI_Controller {
 
 	        $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(10);
 	        $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(50);
+	        $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(15);
+	        $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(15);
+	        $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(15);
+	        $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(15);
 	        $objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(25);
 
 	        //Sheet yang akan diolah 
@@ -232,7 +236,7 @@ class Diagram_mp extends CI_Controller {
 	        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 
 	        //ubah nama file saat diunduh
-	        header('Content-Disposition: attachment;filename="Laporan Data Kuesioner (Diagram Manaemen dan Profesionalisme) -  '.$dari.' - '.$sampai.'.xlsx"');
+	        header('Content-Disposition: attachment;filename="Laporan Data Kuesioner (Diagram Manajemen dan Profesionalisme) -  '.$dari.' - '.$sampai.'.xlsx"');
 
 	        //unduh file
 	        $objWriter->save("php://output");

@@ -177,7 +177,7 @@
                                         <div class="panel-q 1">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                            <h2><b>Kompetensi teknologi informasi (untuk perusahaan teknologi informasi )</b></h2>
+                                            <h2><b>Kompetensi Teknologi Informasi</b></h2>
                                                 <table class="table table-bordered">
                                                 <tr>
                                                     <th rowspan="2"><center><p style="margin-top:15px">No</p></center></th>

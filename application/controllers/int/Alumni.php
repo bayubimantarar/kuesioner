@@ -235,6 +235,75 @@ class Alumni extends CI_Controller {
         $objWriter->save("php://output");
     }
 
+    public function export_excel_byid(){
+    	$id = $this->uri->segment(4);
+
+    	$alumni = $this->kuesioner_app->get_alumni_byid($id);
+
+        $objPHPExcel = new PHPExcel();
+
+        $styleArray = array(
+          	'borders' => array(
+           		'allborders' => array(
+           			'style' => PHPExcel_Style_Border::BORDER_THIN
+           			)
+           		)
+           	);
+
+        $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(10);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(25);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(25);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(25);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(50);
+
+        // //set Sheet yang akan diolah 
+        $objPHPExcel->setActiveSheetIndex(0)
+                    ->setCellValue('A1', 'NIM')
+                    ->setCellValue('B1', 'Nama Lengkap')
+                    ->setCellValue('C1', 'Jurusan')
+                    ->setCellValue('D1', 'Email')
+                    ->setCellValue('E1', 'Alamat');
+
+            
+        $column = $objPHPExcel->setActiveSheetIndex(0);
+        $counter = 2;
+
+        foreach ($alumni as $row){
+          	if($row['jurusan'] == 1){
+           		$jurusan = "Teknik Informatika";
+           	}else{
+           		$jurusan = "Sistem Informasi";
+           	}
+
+	        $column->setCellValue("A".$counter, $row['nim']);
+	        $column->setCellValue("B".$counter, $row['nama']);
+	        $column->setCellValue("C".$counter, $jurusan);
+	        $column->setCellValue("D".$counter, $row['email']);
+	        $column->setCellValue("E".$counter, $row['alamat']);
+	        $objPHPExcel->getActiveSheet()->getStyle('A1:E'.$counter)->applyFromArray($styleArray);
+	        $counter++;
+        }
+
+        $objPHPExcel->getActiveSheet()->setTitle('Excel Pertama');
+ 
+        //mulai menyimpan excel format xlsx, kalau ingin xls ganti Excel2007 menjadi Excel5          
+        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+ 
+        // //sesuaikan headernya 
+        header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+        header("Cache-Control: no-store, no-cache, must-revalidate");
+        header("Cache-Control: post-check=0, pre-check=0", false);
+        header("Pragma: no-cache");
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+
+        //ubah nama file saat diunduh
+        header('Content-Disposition: attachment;filename="hasilExcel.xlsx"');
+
+        //unduh file
+        $objWriter->save("php://output");
+
+    }
+
 }
 
 /* End of file Alumni.php */

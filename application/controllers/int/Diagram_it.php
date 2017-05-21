@@ -48,7 +48,11 @@ class Diagram_it extends CI_Controller {
 	           	);
 
 	        $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(10);
-	        $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(50);
+	        $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(75);
+	        $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(15);
+	        $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(15);
+	        $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(15);
+	        $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(15);
 	        $objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(25);
 
 	        //Sheet yang akan diolah 

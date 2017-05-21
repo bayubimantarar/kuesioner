@@ -20,6 +20,12 @@ class Kuesioner_app extends CI_Model {
 		return $query;
 	}
 
+	public function get_data_kuesioner(){
+		$query = $this->db->query('SELECT hs.*, alm.* FROM alumni alm INNER JOIN hasil hs ON alm.nim = hs.nim ORDER BY hs.tanggal_kuesioner')->result_array();
+
+		return $query;
+	}
+
 	public function get_alumni_detail($nim){
 		$this->db->where('nim', $nim);
 		$query = $this->db->get('alumni');

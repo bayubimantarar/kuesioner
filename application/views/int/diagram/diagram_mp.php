@@ -7,7 +7,7 @@
                     <?php echo form_open(base_url('int/diagram_mp/export_excel_diagram_mp')); ?>
                         <h1>Manajemen & Profesionalisme</h1>
                         <div class="form-group">
-                            <label>Export excel:</label>
+                            <label>Export excel :</label>
                         </div>
                         <div class="form-group">
                             <div class="form-inline">

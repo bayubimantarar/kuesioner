@@ -60,31 +60,29 @@ class Form_kuesioner extends CI_Controller {
 			$ti7 = $this->input->post('ti7');
 
 			$data = array(
-						'nim' => $nim,
-						'jurusan' => $jurusan,
-						'token' => $token,
-						'nama_perusahaan' => $nama_perusahaan,
-						'bidang' => $bidang,
-						'sebagai' => $sebagai,
-						'tahun_masuk' => $tahun_masuk,
+						'nim' 				=> $nim,
+						'jurusan' 			=> $jurusan,
+						'token' 			=> $token,
+						'nama_perusahaan' 	=> $nama_perusahaan,
+						'bidang' 			=> $bidang,
+						'sebagai' 			=> $sebagai,
+						'tahun_masuk' 		=> $tahun_masuk,
 						'tanggal_kuesioner' => $tanggal_kuesioner,
-						'mp1' => $mp1,
-						'mp2' => $mp2,
-						'mp3' => $mp3,
-						'mp4' => $mp4,
-						'mp5' => $mp5,
-						'mp6' => $mp6,
-						'mp7' => $mp7,
-						'ti1' => $ti1,
-						'ti2' => $ti2,
-						'ti3' => $ti3,
-						'ti4' => $ti4,
-						'ti5' => $ti5,
-						'ti6' => $ti6,
-						'ti7' => $ti7
+						'mp1' 				=> $mp1,
+						'mp2' 				=> $mp2,
+						'mp3' 				=> $mp3,
+						'mp4' 				=> $mp4,
+						'mp5' 				=> $mp5,
+						'mp6' 				=> $mp6,
+						'mp7' 				=> $mp7,
+						'ti1' 				=> $ti1,
+						'ti2' 				=> $ti2,
+						'ti3' 				=> $ti3,
+						'ti4' 				=> $ti4,
+						'ti5' 				=> $ti5,
+						'ti6' 				=> $ti6,
+						'ti7' 				=> $ti7
 					);
-
-			print_r($data);
 
 			$data_token = array(
 							'status' => 1 
@@ -104,20 +102,21 @@ class Form_kuesioner extends CI_Controller {
 			$mp7 = $this->input->post('mp7');
 
 			$data = array(
-						'nim' => $nim,
-						'jurusan' => $jurusan,
-						'token' => $token,
-						'nama_perusahaan' => $nama_perusahaan,
-						'bidang' => $bidang,
-						'sebagai' => $sebagai,
-						'tahun_masuk' => $tahun_masuk,
-						'mp1' => $mp1,
-						'mp2' => $mp2,
-						'mp3' => $mp3,
-						'mp4' => $mp4,
-						'mp5' => $mp5,
-						'mp6' => $mp6,
-						'mp7' => $mp7,
+						'nim' 				=> $nim,
+						'jurusan' 			=> $jurusan,
+						'token' 			=> $token,
+						'nama_perusahaan' 	=> $nama_perusahaan,
+						'bidang' 			=> $bidang,
+						'sebagai' 			=> $sebagai,
+						'tahun_masuk' 		=> $tahun_masuk,
+						'tanggal_kuesioner' => $tanggal_kuesioner,
+						'mp1' 				=> $mp1,
+						'mp2' 				=> $mp2,
+						'mp3' 				=> $mp3,
+						'mp4' 				=> $mp4,
+						'mp5' 				=> $mp5,
+						'mp6' 				=> $mp6,
+						'mp7' 				=> $mp7,
 					);
 
 			$data_token = array(

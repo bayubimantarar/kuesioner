@@ -13,7 +13,7 @@ class Kuesioner extends CI_Controller {
 
 	public function index(){
 		$data = array(
-				'title' 		=> 'Kuesioner | Website Kuesioner',
+				'title' 		=> 'Kuesioner | Kuesioner Alumni STMIK Bandung',
 				'alumni'		=> $this->kuesioner_app->get_alumnitoken_byid($this->session->userdata('nim'))
 				);
 
@@ -26,7 +26,7 @@ class Kuesioner extends CI_Controller {
 
 	public function form(){
 		$data = array(
-				'title' 	=> 'Form Kuesioner | Website Kuesioner',
+				'title' 	=> 'Form Kuesioner | Kuesioner Alumni STMIK Bandung',
 				'alumni'	=> $this->kuesioner_app->get_alumni_byid($this->session->userdata('id'))
 				);
 
@@ -35,6 +35,56 @@ class Kuesioner extends CI_Controller {
 		$this->load->view('pages/sidebar');
 		$this->load->view('kuesioner/form', $data);
 		$this->load->view('pages/footer');
+	}
+
+	public function form_edit(){
+		$data = array(
+				'title' 	=> 'Form Edit | Kuesioner Alumni STMIK Bandung',
+				'alumni'	=> $this->kuesioner_app->get_alumni_byid($this->session->userdata('id'))
+				);
+		
+		$id = $this->uri->segment('3');
+
+		$this->load->view('pages/header', $data);
+		$this->load->view('pages/navbar');
+		$this->load->view('pages/sidebar');
+		$this->load->view('kuesioner/form_edit', $data);
+		$this->load->view('pages/footer');
+	}
+
+	public function edit_process(){
+		$id 			= $this->input->post('id');
+		$nama 			= $this->input->post('nama');
+		$password 		= bcrypt($this->input->post('password', TRUE), 12);
+		$email 			= $this->input->post('email');
+		$alamat 		= $this->input->post('alamat');
+
+		if(!empty($password)){
+			$data = array(
+						'id' => $id,
+						'username' 	=> $username,
+						'password' 	=> $password,
+						'email' 	=> $email 
+					);
+
+			$query = $this->kuesioner_app->users_update_process($data, $id);
+
+			$this->session->set_flashdata('notif', 'Berhasil mengedit data!');
+
+			redirect(base_url('int/users/index'));
+		}else{
+			$data = array(
+						'id' => $id,
+						'username' 	=> $username,
+						'email' 	=> $email 
+					);
+
+			$query = $this->kuesioner_app->users_update_process($data, $id);
+
+			$this->session->set_flashdata('notif', 'Berhasil mengedit data!');
+
+			redirect(base_url('int/users/index'));
+		}
 	}
 
 	public function send(){
@@ -48,7 +98,7 @@ class Kuesioner extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE){
 			$data = array(
-				'title' 	=> 'Alumni | Website Kuesioner',
+				'title' 	=> 'Form Kuesioner | Kuesioner Alumni STMIK Bandung',
 				'alumni'	=> $this->kuesioner_app->get_alumni_byid($this->session->userdata('nim'))
 				);
 

@@ -3,26 +3,14 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Kuesioner <a href="<?php echo base_url('kuesioner/form'); ?>" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Mulai Kuesioner</a></h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <?php if($this->session->flashdata('notif')): ?>
-                        <div class="alert alert-success alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <?php echo $this->session->flashdata('notif'); ?>
-                        </div>
-                    <?php endif; ?>
+                    <h1 class="page-header">Tabel Kuesioner <a href="<?php echo base_url('int/alumni/export_excel'); ?>" class="btn btn-sm btn-success"><i class="fa fa-file-excel-o"></i> Export Excel</a></h1>
                 </div>
             </div>
-            <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            Table Track Kuesioner
+                            Tabel Kuesioner
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -34,19 +22,21 @@
                                             <th>NIM</th>
                                             <th>Nama</th>
                                             <th>Tanggal Kuesioner</th>
+                                            <th>Opsi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <?php  
                                         $no=0;
-                                        foreach ($alumni as $row):
+                                        foreach ($kuesioner as $row):
                                         $no++;
                                     ?>
                                         <tr>
                                             <td><?php echo $no; ?></td>
-                                            <td><?php echo $row['nim'] ?></td>
+                                            <td><?php echo $row['nim']; ?></a></td>
                                             <td><?php echo $row['nama']; ?></td>
-                                            <td><?php echo $row['created']; ?></td>
+                                            <td><?php echo $row['tanggal_kuesioner']; ?></td>
+                                            <td><a href="<?php echo base_url('int/users/users_delete/'.$row['id']); ?>" class="btn btn-circle btn-danger" onclick="return confirm('Anda yakin akan menghapus data ini?')"><i class="fa fa-remove"></i></a> <a href="<?php echo base_url('int/alumni/export_excel_byid/'.$row['id']); ?>" class="btn btn-circle btn-success"><i class="fa fa-file-excel-o"></i></a></td>
                                         </tr>
                                     <?php endforeach; ?>
                                     </tbody>

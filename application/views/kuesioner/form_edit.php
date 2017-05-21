@@ -3,7 +3,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Form Kuesioner</h1>
+                    <h1 class="page-header">Form Edit</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -12,7 +12,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            Form Kuesioner
+                            Form Edit
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -24,83 +24,51 @@
                                         foreach ($alumni as $row):
                                     ?>
                                         <div class="form-group">
-                                            <label>NIM<?php echo form_error('nim'); ?></label>
+                                            <label>NIM</label>
                                             <div class="row">
                                                 <div class="col-md-5">
+                                                    <input type="hidden" class="form-control" name="nim" value="<?php echo $row['id']; ?>" readonly>
                                                     <input class="form-control" name="nim" value="<?php echo $row['nim']; ?>" readonly>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Nama Lengkap<?php echo form_error('nama'); ?></label>
+                                            <label>Nama Lengkap</label>
                                             <div class="row">
                                                 <div class="col-md-5">
-                                                    <input class="form-control" name="nama" value="<?php echo $row['nama'] ?>" readonly>
+                                                    <input class="form-control" name="nama" value="<?php echo $row['nama'] ?>">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Lulus Tahun</label>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <select name="lulus" class="form-control">
-                                                    <?php
-                                                        for($i=date('Y')-1; $i>=1993; $i-=1):     
-                                                    ?>
-                                                    <option value="<?php echo $i; ?>"><?php echo $i ?></option>
-                                                    <?php 
-                                                        endfor; 
-                                                    ?>     
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <h1><b>Identitas Perusahaan & Pimpinan</b></h1> 
-                                        <hr>
-                                        <div class="form-group">
-                                            <label>Nama perusahaan<?php echo form_error('nama_perusahaan'); ?></label>
+                                            <label>Password</label>
                                             <div class="row">
                                                 <div class="col-md-5">
-                                                    <input class="form-control" name="nama_perusahaan" value="<?php echo set_value('nama_perusahaan'); ?>">
-                                                </div>
-                                            </div>
-                                        </div> <div class="form-group">
-                                            <label>Masuk Tahun</label>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <select name="lulus" class="form-control">
-                                                    <?php
-                                                        for($i=date('Y'); $i>=1993; $i-=1):     
-                                                    ?>
-                                                    <option value="<?php echo $i; ?>"><?php echo $i ?></option>
-                                                    <?php 
-                                                        endfor; 
-                                                    ?>     
-                                                    </select>
+                                                    <input class="form-control" name="password">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Bekerja Sebagai<?php echo form_error('sebagai'); ?></label>
+                                            <label>Konfirmasi Password</label>
                                             <div class="row">
                                                 <div class="col-md-5">
-                                                    <input class="form-control" name="sebagai" value="<?php echo set_value('sebagai'); ?>">
+                                                    <input class="form-control" name="konfirmasi_password">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Nama Pimpinan<?php echo form_error('nama_pimpinan'); ?></label>
+                                            <label>Email<?php echo form_error('nama'); ?></label>
                                             <div class="row">
                                                 <div class="col-md-5">
-                                                    <input class="form-control" name="nama_pimpinan" value="<?php echo set_value('nama_pimpinan'); ?>">
+                                                    <input class="form-control" name="email" value="<?php echo $row['email'] ?>">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Email Pimpinan<?php echo form_error('email_pimpinan'); ?></label>
+                                            <label>Alamat</label>
                                             <div class="row">
-                                                <div class="col-md-5">
-                                                    <input class="form-control" name="email_pimpinan" value="<?php echo set_value('email_pimpinan'); ?>">
+                                                <div class="col-md-7">
+                                                    <textarea name="alamat" rows="4" class="form-control"><?php echo $row['alamat']; ?></textarea>
                                                 </div>
                                             </div>
                                         </div>

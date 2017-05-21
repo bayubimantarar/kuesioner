@@ -47,7 +47,7 @@
                                             <td><?php echo $row['username']; ?></a></td>
                                             <td><?php echo $row['email']; ?></td>
                                             <td><?php echo $row['active_since']; ?></td>
-                                            <td><a href="<?php echo base_url('int/users/form_edit/'.$row['id']); ?>" class="btn btn-circle btn-warning"><i class="fa fa-pencil"></i></a> <a href="<?php echo base_url('int/users/users_delete/'.$row['id']); ?>" class="btn btn-circle btn-danger"><i class="fa fa-remove"></i></a></td>
+                                            <td><a href="<?php echo base_url('int/users/form_edit/'.$row['id']); ?>" class="btn btn-circle btn-warning"><i class="fa fa-pencil"></i></a> <a href="<?php echo base_url('int/users/users_delete/'.$row['id']); ?>" class="btn btn-circle btn-danger" onclick="return confirm('Anda yakin akan menghapus data ini?')"><i class="fa fa-remove"></i></a></td>
                                         </tr>
                                     <?php endforeach; ?>
                                     </tbody>
