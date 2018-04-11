@@ -7,5 +7,5 @@ Tugas akhir mini project 2 (codeigniter)
 # Login Mahasiswa
 `localhost/kuesioner/`
 
-# login Admin
+# Login Admin
 `localhost/kuesioner/int/`
