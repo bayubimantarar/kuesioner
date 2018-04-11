@@ -128,7 +128,7 @@ class Kuesioner extends CI_Controller {
 			$query 	= $this->kuesioner_app->token_add_process($data);
 
 			$result = 	$this->email
-						->from('emailkamu@mail.com')
+						->from('bayubimantarar@gmail.com')
 						->to($email_pimpinan)
 						->subject("Form Kuesioner STMIK Bandung")
 						->message($message)
