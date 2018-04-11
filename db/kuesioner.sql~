@@ -14,8 +14,8 @@ Date: 2017-05-09 16:54:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
-CREATE DATABASE kuesioner;
-USE kuesioner;
+CREATE DATABASE kuesioner_ori;
+USE kuesioner_ori;
 
 -- ----------------------------
 -- Table structure for alumni
