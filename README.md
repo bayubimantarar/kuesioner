@@ -13,10 +13,12 @@ silahkan clone repository ini, dengan cara ketik perintah pada terminal : `git c
 `localhost/kuesioner/`
 
 nim: 1215002
+
 password: 1215002
 
 # Login Admin
 `localhost/kuesioner/int/`
 
 username: admin
+
 password: 123
